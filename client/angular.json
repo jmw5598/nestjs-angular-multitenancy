@@ -106,7 +106,7 @@
         }
       }
     },
-    "manager": {
+    "backoffice": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -116,25 +116,25 @@
           "strict": true
         }
       },
-      "root": "projects/manager",
-      "sourceRoot": "projects/manager/src",
+      "root": "projects/backoffice",
+      "sourceRoot": "projects/backoffice/src",
       "prefix": "xyz",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/manager",
-            "index": "projects/manager/src/index.html",
-            "main": "projects/manager/src/main.ts",
-            "polyfills": "projects/manager/src/polyfills.ts",
-            "tsConfig": "projects/manager/tsconfig.app.json",
+            "outputPath": "dist/backoffice",
+            "index": "projects/backoffice/src/index.html",
+            "main": "projects/backoffice/src/main.ts",
+            "polyfills": "projects/backoffice/src/polyfills.ts",
+            "tsConfig": "projects/backoffice/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "projects/manager/src/favicon.ico",
-              "projects/manager/src/assets"
+              "projects/backoffice/src/favicon.ico",
+              "projects/backoffice/src/assets"
             ],
             "styles": [
-              "projects/manager/src/styles.scss"
+              "projects/backoffice/src/styles.scss"
             ],
             "scripts": []
           },
@@ -154,8 +154,8 @@
               ],
               "fileReplacements": [
                 {
-                  "replace": "projects/manager/src/environments/environment.ts",
-                  "with": "projects/manager/src/environments/environment.prod.ts"
+                  "replace": "projects/backoffice/src/environments/environment.ts",
+                  "with": "projects/backoffice/src/environments/environment.prod.ts"
                 }
               ],
               "outputHashing": "all"
@@ -175,10 +175,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "manager:build:production"
+              "browserTarget": "backoffice:build:production"
             },
             "development": {
-              "browserTarget": "manager:build:development"
+              "browserTarget": "backoffice:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -186,23 +186,23 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "manager:build"
+            "browserTarget": "backoffice:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/manager/src/test.ts",
-            "polyfills": "projects/manager/src/polyfills.ts",
-            "tsConfig": "projects/manager/tsconfig.spec.json",
-            "karmaConfig": "projects/manager/karma.conf.js",
+            "main": "projects/backoffice/src/test.ts",
+            "polyfills": "projects/backoffice/src/polyfills.ts",
+            "tsConfig": "projects/backoffice/tsconfig.spec.json",
+            "karmaConfig": "projects/backoffice/karma.conf.js",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "projects/manager/src/favicon.ico",
-              "projects/manager/src/assets"
+              "projects/backoffice/src/favicon.ico",
+              "projects/backoffice/src/assets"
             ],
             "styles": [
-              "projects/manager/src/styles.scss"
+              "projects/backoffice/src/styles.scss"
             ],
             "scripts": []
           }

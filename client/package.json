@@ -4,7 +4,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start:admin": "ng serve --project admin --port 4200",
+    "start:backoffice": "ng serve --project backoffice --port 4201",
     "build": "ng build",
+    "build:admin": "ng build --project admin",
+    "build:backoffice": "ng build --project backoffice",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },

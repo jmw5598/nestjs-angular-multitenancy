@@ -24,6 +24,9 @@
       "@xyz/admin/*": [
         "./projects/admin/src/app/*"
       ],
+      "@xyz/backoffice/*": [
+        "./projects/backoffice/src/app/*"
+      ],
       "@xyz/admin/env/*": [
         "./projects/admin/src/env/*"
       ]
