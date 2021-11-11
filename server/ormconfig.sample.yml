@@ -1,0 +1,41 @@
+# TypeORM Connection configuration sample
+
+# Tenant Common
+default:
+  name: 'default'
+  type: 'postgres'
+  host: 'localhost'
+  port: 5432
+  username: ''
+  password: ''
+  database: ''
+  synchronize: false
+  logging: true
+  entities: ['src/entity/**/*.ts']
+  migrations: ['database/migrations/**/*.ts']
+  subscribers: ['src/subscriber/**/*.ts']
+  cli:
+    entities: 'dist/**/*.entity.js'
+    entitiesDir: 'src/**/*.entity.ts'
+    migrations: 'dist/database/migrations/common/*.js'
+    migrationsDir: 'src/database/migrations/common'
+
+# Tennant
+tenant: 
+  name: 'tenant'
+  type: 'postgres'
+  host: 'localhost'
+  port: 5432
+  username: ''
+  password: ''
+  database: ''
+  synchronize: false
+  logging: true
+  entities: ['src/entity/**/*.ts']
+  migrations: ['database/migrations/**/*.ts']
+  subscribers: ['src/subscriber/**/*.ts']
+  cli:
+    entities: 'dist/**/*.entity.js'
+    entitiesDir: 'src/**/*.entity.ts'
+    migrations: 'dist/database/migrations/tenant/*.js'
+    migrationsDir: 'src/database/migrations/tenant'
