@@ -22,7 +22,10 @@
     ],
     "paths": {
       "@xyz/admin/*": [
-        "projects/admin/src/app/**"
+        "./projects/admin/src/app/*"
+      ],
+      "@xyz/admin/env/*": [
+        "./projects/admin/src/env/*"
       ]
     }
   },
