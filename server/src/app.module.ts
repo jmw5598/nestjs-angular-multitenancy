@@ -1,8 +1,10 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { TenantsModule } from './admin/tenants/tenants.module';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
+import { TenantResolutionMiddleware } from './common/multitenancy/tenant-resolution.middleware';
 
 @Module({
   imports: [
@@ -13,4 +15,11 @@ import { TenantsModule } from './admin/tenants/tenants.module';
   controllers: [],
   providers: [],
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+  public configure(consumer: MiddlewareConsumer): void {
+    consumer
+      .apply(TenantResolutionMiddleware)
+      .exclude('admin/(.*)')
+      .forRoutes('*');
+  }
+}
