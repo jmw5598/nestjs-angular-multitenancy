@@ -3,7 +3,6 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { TenantsModule } from './admin/tenants/tenants.module';
-import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { TenantResolutionMiddleware } from './common/multitenancy/tenant-resolution.middleware';
 
 @Module({
