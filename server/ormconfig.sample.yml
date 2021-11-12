@@ -11,14 +11,12 @@ default:
   database: ''
   synchronize: false
   logging: true
-  entities: ['src/entity/**/*.ts']
-  migrations: ['database/migrations/**/*.ts']
-  subscribers: ['src/subscriber/**/*.ts']
-  cli:
-    entities: 'dist/**/*.entity.js'
-    entitiesDir: 'src/**/*.entity.ts'
-    migrations: 'dist/database/migrations/common/*.js'
-    migrationsDir: 'src/database/migrations/common'
+  entities: ['dist/**/*.entity.js']
+  entitiesDir: ['src/database/entities/common/**/*.entity.ts']
+  migrations: ['dist/database/migrations/common/**/*.js']
+  migrationsDir: ['src/database/migrations/common']
+  subscribers: ['dist/database/subscribers/common/**/*.ts']
+  subscribtersDir: ['src/database/subscribers/common/**/*.ts']
 
 # Tennant
 tenant: 
@@ -31,11 +29,9 @@ tenant:
   database: ''
   synchronize: false
   logging: true
-  entities: ['src/entity/**/*.ts']
-  migrations: ['database/migrations/**/*.ts']
-  subscribers: ['src/subscriber/**/*.ts']
-  cli:
-    entities: 'dist/**/*.entity.js'
-    entitiesDir: 'src/**/*.entity.ts'
-    migrations: 'dist/database/migrations/tenant/*.js'
-    migrationsDir: 'src/database/migrations/tenant'
+  entities: ['dist/**/*.entity.js']
+  entitiesDir: ['src/database/entities/tenant/**/*.entity.ts']
+  migrations: ['dist/database/migrations/tenant/**/*.js']
+  migrationsDir: ['src/database/migrations/tenant']
+  subscribers: ['dist/database/subscribers/tenant/**/*.ts']
+  subscribtersDir: ['src/database/subscribers/tenant/**/*.ts']
