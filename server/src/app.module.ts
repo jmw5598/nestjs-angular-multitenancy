@@ -5,13 +5,17 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { TenantsModule } from './admin/tenants/tenants.module';
 import { TenantResolutionMiddleware } from './common/multitenancy/tenant-resolution.middleware';
 import { MultitenancyModule } from './common/multitenancy/multitenancy.module';
+import { AuthenticationModule } from './authentication/authentication.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRoot(),
     TenantsModule,
-    MultitenancyModule
+    MultitenancyModule,
+    AuthenticationModule,
+    UsersModule
   ],
   controllers: [],
   providers: [],
