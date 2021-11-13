@@ -1,3 +1,7 @@
 .card {
   @apply rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden bg-white;
 }
+
+.card-default {
+  @apply py-10 px-9 mt-8;
+}

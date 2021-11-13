@@ -1,0 +1,33 @@
+.btn {
+  @apply text-white py-2 px-4 border border-transparent text-sm font-medium rounded-md;
+
+  &-full {
+    @apply block w-full;
+  }
+
+  &-primary {
+    @apply bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500;
+  }
+
+  &-secondary {
+    @apply text-black bg-gray-200 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-200;
+  }
+
+  &-success {
+    @apply bg-green-500 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500;
+  }
+
+  &-info {
+    @apply bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500;
+  }
+
+  &-warning {
+    @apply bg-yellow-500 hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500;
+  }
+
+  &-danger {
+    @apply bg-red-500 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500;
+  }
+
+  // @TODO - success, info, warning, danger styles
+}
