@@ -4,12 +4,14 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { TenantsModule } from './admin/tenants/tenants.module';
 import { TenantResolutionMiddleware } from './common/multitenancy/tenant-resolution.middleware';
+import { MultitenancyModule } from './common/multitenancy/multitenancy.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRoot(),
-    TenantsModule
+    TenantsModule,
+    MultitenancyModule
   ],
   controllers: [],
   providers: [],

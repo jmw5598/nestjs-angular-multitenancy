@@ -2,6 +2,7 @@ import { BadRequestException, Injectable, NestMiddleware } from '@nestjs/common'
 import { Connection, createConnection, getConnection } from 'typeorm';
 
 import { Tenant } from 'src/database/entities/common/tenant.entity';
+import { extractSubdomainFromRequest } from './multitenancy.utils';
 
 @Injectable()
 export class TenantResolutionMiddleware implements NestMiddleware {
@@ -10,16 +11,21 @@ export class TenantResolutionMiddleware implements NestMiddleware {
   ) { }
 
   public async use(req: any, res: any, next: () => void) {
-    const { connectionString, ...tenant }: Tenant = await this._connection
+    // Find tenant from subdomain
+    const subdomain: string = extractSubdomainFromRequest(req);
+    const foundTenant: Tenant = await this._connection
       .getRepository(Tenant)
-      .findOne(({ where: { host: req.headers.host } }));
-    
-    req.tenant = tenant;
+      .findOne(({ where: { domain: subdomain } }));
 
-    if (!tenant || !connectionString) {
+    if (!foundTenant || !foundTenant?.connectionString) {
       throw new BadRequestException('Database Connection Error', 'There is a Error with the Database!');
     }
 
+    // Add tenant to request
+    const { connectionString, ...tenant } = foundTenant;
+    req.tenant = tenant;
+
+    // Check if connections exist else try to create one.
     try {
       getConnection(tenant.identifier);
       next();
@@ -28,7 +34,7 @@ export class TenantResolutionMiddleware implements NestMiddleware {
         name: tenant.identifier,
         type: 'postgres',
         url: connectionString,
-        entities: ['src/database/entities/tenant/**/*.entity.ts'],
+        entities: ['dist/database/entities/tenant/**/*.entity.js'],
         synchronize: false,
       });
 
