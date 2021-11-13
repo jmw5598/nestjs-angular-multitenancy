@@ -1,4 +1,4 @@
-import { Injectable, BadRequestException } from '@nestjs/common';
+import { BadRequestException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UsersService } from '../users/users.service';
 import { RefreshTokensService } from './services/refresh-tokens.service';
@@ -35,12 +35,10 @@ export class AuthenticationService {
   }
 
   public async login(user: User, tenant: Tenant): Promise<AuthenticatedUser> {
-    const authenticatedUser: AuthenticatedUser = await this._generateAuthenticatedUser(user);
-    authenticatedUser.userDetails.tenant = tenant;
-    return authenticatedUser;
+    return this._generateAuthenticatedUser(user, tenant);
   }
 
-  public async refreshToken(accessToken: string, refreshToken: string): Promise<AuthenticatedUser> {
+  public async refreshToken(accessToken: string, refreshToken: string, tenant: Tenant): Promise<AuthenticatedUser> {
     const tokenPayload: any = this.jwtService.decode(accessToken);
     const tokenInDb: RefreshToken = await this.refreshTokensService.findByRefreshTokenAndUserId(refreshToken, tokenPayload.sub);
     const user: User = await this.userService.findByUsername(tokenPayload.username);
@@ -49,27 +47,27 @@ export class AuthenticationService {
       throw new BadRequestException('Unable to refresh token');
     }
 
-    return this._generateAuthenticatedUser(user);
+    return this._generateAuthenticatedUser(user, tenant);
   }
 
-  private async _generateAuthenticatedUser(user: User): Promise<AuthenticatedUser> {
+  private async _generateAuthenticatedUser(user: User, tenant: Tenant): Promise<AuthenticatedUser> {
     const expiresIn: string = '1h';
     return {
-      accessToken: await this._getAccessToken(user, expiresIn),
+      accessToken: await this._getAccessToken(user, tenant, expiresIn),
       refreshToken: await this._getRefreshToken(user),
       prefix: 'Bearer',
       expiresIn: expiresIn,
-      userDetails: await this._getUserDetails(user)
+      userDetails: await this._getUserDetails(user, tenant)
     } as AuthenticatedUser;
   }
 
-  private async _getAccessToken(user: User, expiresIn: string): Promise<string> {
+  private async _getAccessToken(user: User, tenant: Tenant, expiresIn: string): Promise<string> {
     const roles: string[] = user.roles.map(e => e.name);
     const payload = { 
       username: user.username, 
       sub: user.id, 
       roles: roles, 
-      // @TODO add tenant id
+      tid: tenant?.identifier
     };
     return this.jwtService.sign(payload, { expiresIn: expiresIn });
   }
@@ -82,7 +80,7 @@ export class AuthenticationService {
     return refreshToken.refreshToken;
   }
 
-  private async _getUserDetails(user: User): Promise<UserDetails> {
+  private async _getUserDetails(user: User, tenant: Tenant): Promise<UserDetails> {
     const roles: string[] = user.roles.map(e => e.name);
     return {
       id: user.id,
@@ -92,7 +90,8 @@ export class AuthenticationService {
         // @TODO
         // Add user settings here?
         // Add claims?
-      } as UserSettings
+      } as UserSettings,
+      tenant: tenant
     } as UserDetails
   }
 }

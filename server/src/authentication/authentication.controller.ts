@@ -15,13 +15,14 @@ export class AuthenticationController {
   @Post('login')
   @HttpCode(200)
   public async login(@Request() req): Promise<AuthenticatedUser> {
-    const tenant: Tenant = req.tenant as Tenant;
+    const tenant: Tenant = req?.tenant as Tenant || null;
     return this.authService.login(req.user, tenant);
   }
 
   @Post('token')
   @HttpCode(200)
-  public async refreshToken(@Body() refreshTokenDto: RefreshTokenDto): Promise<AuthenticatedUser> {
-    return this.authService.refreshToken(refreshTokenDto.accessToken, refreshTokenDto.refreshToken);
+  public async refreshToken(@Request() req, @Body() refreshTokenDto: RefreshTokenDto): Promise<AuthenticatedUser> {
+    const tenant: Tenant = req?.tenant as Tenant || null;
+    return this.authService.refreshToken(refreshTokenDto.accessToken, refreshTokenDto.refreshToken, tenant);
   }
 }
