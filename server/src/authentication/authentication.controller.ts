@@ -3,6 +3,7 @@ import { AuthenticationService } from './authentication.service';
 import { RefreshTokenDto } from './dtos/refresh-token.dto';
 import { AuthenticatedUser } from './models/authenticated-user.model';
 import { LocalAuthenticationGuard } from './guards/local-authentication.guard';
+import { Tenant } from 'src/database/entities/common/tenant.entity';
 
 @Controller('auth')
 export class AuthenticationController {
@@ -14,7 +15,8 @@ export class AuthenticationController {
   @Post('login')
   @HttpCode(200)
   public async login(@Request() req): Promise<AuthenticatedUser> {
-    return this.authService.login(req.user);
+    const tenant: Tenant = req.tenant as Tenant;
+    return this.authService.login(req.user, tenant);
   }
 
   @Post('token')

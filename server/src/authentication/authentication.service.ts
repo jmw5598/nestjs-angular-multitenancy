@@ -11,6 +11,7 @@ import { InvalidUsernamePasswordException } from './exceptions/invalid-username-
 import { UserSettings } from './models/user-settings.model';
 import { Roles } from './models/roles.enum';
 import { TenantService } from 'src/common/multitenancy/tenant-service.decorator';
+import { Tenant } from 'src/database/entities/common/tenant.entity';
 
 @TenantService()
 export class AuthenticationService {
@@ -21,27 +22,22 @@ export class AuthenticationService {
   ) {}
 
   public async validateUser(username: string, password: string, requestedRole: Roles): Promise<any> {
-    const user: User = await this.userService.findByUsernameAndRequestedRole(username.trim().toLowerCase(), requestedRole);
+    const user: User = await this.userService.findByUsername(username.trim().toLowerCase());
 
     if (!user || !await bcrypt.compare(password, user.password)) {
       throw new InvalidUsernamePasswordException();
     }
 
-    // @TODO - determine if these checks are needed for multi tenant
-    // if (!user.account.isConfirmed) {
-    //   throw new UnconfirmedAccountException();
-    // }
-
-    // if (!user.account.isEnabled) {
-    //   throw new AccountDisabledException();
-    // }
+    // @TODO - determine if user is disabled?
 
     const { password: storedPassword, resetToken, ...result } = user;
     return result;
   }
 
-  public async login(user: User): Promise<AuthenticatedUser> {
-    return this._generateAuthenticatedUser(user);
+  public async login(user: User, tenant: Tenant): Promise<AuthenticatedUser> {
+    const authenticatedUser: AuthenticatedUser = await this._generateAuthenticatedUser(user);
+    authenticatedUser.userDetails.tenant = tenant;
+    return authenticatedUser;
   }
 
   public async refreshToken(accessToken: string, refreshToken: string): Promise<AuthenticatedUser> {
