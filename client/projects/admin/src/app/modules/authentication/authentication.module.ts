@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+
+import { XyzLoadingModule } from '@xyz/admin/modules/shared/modules';
 
 import { AuthenticationRoutingModule } from './authentication-routing.module';
 import { AuthenticationComponent } from './pages/authentication/authentication.component';
@@ -18,7 +21,9 @@ import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password
   ],
   imports: [
     CommonModule,
-    AuthenticationRoutingModule
+    AuthenticationRoutingModule,
+    ReactiveFormsModule,
+    XyzLoadingModule
   ]
 })
 export class AuthenticationModule { }
