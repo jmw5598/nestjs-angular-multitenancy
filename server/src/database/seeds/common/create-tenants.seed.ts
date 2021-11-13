@@ -9,7 +9,14 @@ const tenantSeeds: Tenant[] = [
     updatedAt: new Date(),
     identifier: uuid(), 
     domain: 'localhost', 
-    connectionString: 'postgresql://tenant1:tenant1@localhost:5432/tenant_1'
+    connectionString: 'postgresql://tenantadmin:tenantadmin@localhost:5432/tenant_admin'
+  } as Tenant,
+  {
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    identifier: uuid(), 
+    domain: 'admin', 
+    connectionString: 'postgresql://tenantadmin:tenantadmin@localhost:5432/tenant_admin'
   } as Tenant,
   {
     createdAt: new Date(),
