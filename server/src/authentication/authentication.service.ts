@@ -10,8 +10,9 @@ import { UserDetails } from './models/user-details.model';
 import { InvalidUsernamePasswordException } from './exceptions/invalid-username-password.exception';
 import { UserSettings } from './models/user-settings.model';
 import { Roles } from './models/roles.enum';
+import { TenantService } from 'src/common/multitenancy/tenant-service.decorator';
 
-@Injectable()
+@TenantService()
 export class AuthenticationService {
   constructor(
     private readonly userService: UsersService,

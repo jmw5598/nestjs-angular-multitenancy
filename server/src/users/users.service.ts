@@ -1,15 +1,18 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Roles } from 'src/authentication/models/roles.enum';
-import { Repository } from 'typeorm';
+import { TENANT_CONNECTION } from 'src/common/multitenancy/tenant-connection.token';
+import { TenantService } from 'src/common/multitenancy/tenant-service.decorator';
+import { Connection, Repository } from 'typeorm';
 import { User } from '../database/entities/tenant/user.entity'; 
 
-@Injectable()
+@TenantService()
 export class UsersService {
-  constructor(
-    @InjectRepository(User)
-    private readonly usersRepository: Repository<User>
-  ) {}
+  private readonly usersRepository: Repository<User>;
+
+  constructor(@Inject(TENANT_CONNECTION) private readonly connection: Connection) {
+    this.usersRepository = this.connection.getRepository(User);
+  }
   
   public async findByUsername(username: string): Promise<User | undefined> {
     return (await this.usersRepository.find({

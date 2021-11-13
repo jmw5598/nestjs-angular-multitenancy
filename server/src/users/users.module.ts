@@ -4,10 +4,12 @@ import { User } from '../database/entities/tenant/user.entity';
 import { Role } from '../database/entities/tenant/role.entity';
 
 import { UsersService } from './users.service';
+import { MultitenancyModule } from 'src/common/multitenancy/multitenancy.module';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([User, Role])
+    MultitenancyModule,
+    // TypeOrmModule.forFeature([User, Role])
   ],
   exports: [
     UsersService

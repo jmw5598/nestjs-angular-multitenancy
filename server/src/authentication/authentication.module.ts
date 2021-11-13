@@ -11,6 +11,7 @@ import { jwtConstants } from './constants';
 import { AuthenticationController } from './authentication.controller';
 import { RefreshTokensService } from './services/refresh-tokens.service';
 import { RefreshToken } from '../database/entities/tenant/refresh-token.entity';
+import { MultitenancyModule } from 'src/common/multitenancy/multitenancy.module';
 
 const passportModuleOptions: IAuthModuleOptions = { defaultStrategy: 'jwt' };
 const jwtModuleOptions: JwtModuleOptions = {
@@ -20,10 +21,11 @@ const jwtModuleOptions: JwtModuleOptions = {
 
 @Module({
   imports: [
+    MultitenancyModule,
     UsersModule,
     PassportModule.register(passportModuleOptions),
     JwtModule.register(jwtModuleOptions),
-    TypeOrmModule.forFeature([RefreshToken])
+    // TypeOrmModule.forFeature([RefreshToken])
   ],
   providers: [
     AuthenticationService,

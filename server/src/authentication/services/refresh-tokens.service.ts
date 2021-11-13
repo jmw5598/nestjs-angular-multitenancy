@@ -1,15 +1,19 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Connection, Repository } from 'typeorm';
 import { RefreshToken } from '../../database/entities/tenant/refresh-token.entity';
 import { v4 as uuid } from 'uuid';
+import { Tenant } from 'src/database/entities/common/tenant.entity';
+import { TenantService } from 'src/common/multitenancy/tenant-service.decorator';
+import { TENANT_CONNECTION } from 'src/common/multitenancy/tenant-connection.token';
 
-@Injectable()
+@TenantService()
 export class RefreshTokensService {
-  constructor(
-    @InjectRepository(RefreshToken)
-    private readonly refreshTokenRepository: Repository<RefreshToken>
-  ) {}
+  private readonly refreshTokenRepository: Repository<RefreshToken>;
+
+  constructor(@Inject(TENANT_CONNECTION) private readonly connection: Connection) {
+    this.refreshTokenRepository = this.connection.getRepository(RefreshToken);
+  }
 
   public async findByRefreshTokenAndUserId(refreshToken: string, userId: string): Promise<RefreshToken> {
     return this.refreshTokenRepository.findOne({ 
