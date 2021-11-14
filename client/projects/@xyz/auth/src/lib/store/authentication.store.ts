@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { take } from 'rxjs/operators';
 
-import { AuthenticationService } from '../services';
+import { AuthenticationService } from '../services/authentication.service';
 
 import { 
   AbstractStore, 
@@ -23,9 +23,7 @@ export const initialAuthenticationState: AuthenticationState = {
   authenticatedStatus: AuthenticatedStatus.UNAUTHENTICATED
 };
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class AuthenticationStore extends AbstractStore<AuthenticationState> {
   constructor(private _authenticationService: AuthenticationService) {
     super(initialAuthenticationState);

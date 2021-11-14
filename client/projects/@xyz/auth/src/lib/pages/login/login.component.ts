@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { buildLoginForm } from './login-form.builder';
-import { AuthenticationState, AuthenticationStore } from '@xyz/admin/modules/core/store/authentication.store';
+import { AuthenticationState, AuthenticationStore } from '../../store/authentication.store';
 import { 
   AuthenticatedStatus,
   ResponseMessage, 

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthenticationStore } from '@xyz/admin/modules/core/store/authentication.store';
+import { AuthenticationStore } from '../../store/authentication.store';
 
 @Component({
   selector: 'xyz-logging-out',

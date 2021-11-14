@@ -7,6 +7,14 @@ import { CoreModule } from './modules/core/core.module';
 
 import { environment } from '@xyz/admin/env/environment';
 import { XyzCoreModule } from '@xyz/core';
+import { XyzAuthModule, JwtTokenInterceptor } from '@xyz/auth';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+
+const jwtTokenInterceptor = {
+  provide: HTTP_INTERCEPTORS,
+  useClass: JwtTokenInterceptor,
+  multi: true
+}
 
 @NgModule({
   declarations: [
@@ -15,10 +23,13 @@ import { XyzCoreModule } from '@xyz/core';
   imports: [
     BrowserModule,
     XyzCoreModule.forRoot({...environment}),
-    CoreModule,
+    XyzAuthModule.forRoot(),
     AppRoutingModule
   ],
-  providers: [{ provide: Window, useValue: window }],
+  providers: [
+    jwtTokenInterceptor,
+    { provide: Window, useValue: window }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

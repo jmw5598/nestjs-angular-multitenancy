@@ -1,20 +1,20 @@
-import { Injectable, Inject } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 import { EnvironmentService, AuthenticatedUser, UserCredentials, UserSettings } from '@xyz/core';
+import { DOCUMENT } from '@angular/common';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class AuthenticationService {
   private readonly AUTH_USER_KEY: string = "AUTHUSER";
   private readonly REMEMBER_ME_KEY: string = "REMEMBERME";
 
   constructor(
     private _http: HttpClient, 
-    private _env: EnvironmentService
+    private _env: EnvironmentService,
+    @Inject(Window) private _window: Window
   ) { }
 
   public authenticateUser(credentials: UserCredentials): Observable<AuthenticatedUser> {
@@ -35,16 +35,16 @@ export class AuthenticationService {
   }
 
   public logoutUser(): void {
-    localStorage.removeItem(this.AUTH_USER_KEY);  
+    this._window.localStorage.removeItem(this.AUTH_USER_KEY);  
   }
 
   public getStoredAuthenticatedUser(): AuthenticatedUser {
-    const userJson: string | null = localStorage.getItem(this.AUTH_USER_KEY);
+    const userJson: string | null = this._window.localStorage.getItem(this.AUTH_USER_KEY);
     return userJson ? JSON.parse(userJson) : null;
   }
 
   public getStoredRememberMe(): UserCredentials {
-    const credentialsJson: string | null = localStorage.getItem(this.REMEMBER_ME_KEY);
+    const credentialsJson: string | null = this._window.localStorage.getItem(this.REMEMBER_ME_KEY);
     return credentialsJson ? JSON.parse(credentialsJson) : null;
   }
 
@@ -52,19 +52,19 @@ export class AuthenticationService {
     const authenticatedUser: AuthenticatedUser = this.getStoredAuthenticatedUser();
     if (authenticatedUser && authenticatedUser?.userDetails?.settings) {
       authenticatedUser.userDetails.settings = settings;
-      localStorage.setItem(this.AUTH_USER_KEY, JSON.stringify(authenticatedUser));
+      this._window.localStorage.setItem(this.AUTH_USER_KEY, JSON.stringify(authenticatedUser));
     }
   }
 
   private _handleRememberMe(credentials: UserCredentials): void {
     if (credentials.rememberMe) {
-      localStorage.setItem(this.REMEMBER_ME_KEY, JSON.stringify(credentials));
+      this._window.localStorage.setItem(this.REMEMBER_ME_KEY, JSON.stringify(credentials));
     } else {
-      localStorage.removeItem(this.REMEMBER_ME_KEY);
+      this._window.localStorage.removeItem(this.REMEMBER_ME_KEY);
     }
   }
 
   private _handleAuthenticatedUser(user: AuthenticatedUser): void {
-    localStorage.setItem(this.AUTH_USER_KEY, JSON.stringify(user));
+    this._window.localStorage.setItem(this.AUTH_USER_KEY, JSON.stringify(user));
   }
 }

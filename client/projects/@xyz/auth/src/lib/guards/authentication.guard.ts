@@ -7,9 +7,7 @@ import { take, map } from 'rxjs/operators';
 import { AuthenticationState, AuthenticationStore } from '../store/authentication.store';
 import { AuthenticatedStatus } from '@xyz/core';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class AuthenticationGuard implements CanActivate {
   constructor(
     private _authenticationStore: AuthenticationStore,

@@ -1,13 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { JwtTokenInterceptor } from './interceptors/jwt-token.interceptor';
-
-const jwtTokenInterceptor = {
-  provide: HTTP_INTERCEPTORS,
-  useClass: JwtTokenInterceptor,
-  multi: true
-}
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [],
@@ -16,7 +9,6 @@ const jwtTokenInterceptor = {
     HttpClientModule
   ],
   providers: [
-    jwtTokenInterceptor,
     { provide: Window, useValue: window }
   ]
 })
