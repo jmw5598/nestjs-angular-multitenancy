@@ -30,6 +30,9 @@
       "@xyz/admin/env/*": [
         "./projects/admin/src/environments/*"
       ],
+      "@xyz/backoffice/env/*": [
+        "./projects/backoffice/src/environments/*"
+      ],
       "@xyz/auth": [
         "dist/@xyz/auth/xyz-auth",
         "dist/@xyz/auth"
