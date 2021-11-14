@@ -2,11 +2,11 @@
   @apply px-4 py-3 shadow-md;
 
   &-primary {
-    @apply bg-indigo-100 border-indigo-500 text-indigo-900;
+    @apply bg-primary-100 border-primary-500 text-primary-900;
   }
 
   &-secondary {
-    @apply bg-gray-100 border-gray-500 text-gray-900;
+    @apply bg-secondary-100 border-secondary-500 text-secondary-900;
   }
 
   &-border {
@@ -14,7 +14,7 @@
   }
 
   &-success {
-    @apply bg-green-100 border-green-500 text-green-900;
+    @apply bg-success-100 border-success-500 text-success-900;
   }
 
   &-round-sm {
@@ -26,15 +26,15 @@
   }
 
   &-info {
-    @apply bg-blue-100 border-blue-500 text-blue-900;
+    @apply bg-info-100 border-info-500 text-info-900;
   }
 
   &-warning {
-    @apply bg-yellow-100 border-yellow-500 text-yellow-900;
+    @apply bg-warning-100 border-warning-500 text-warning-900;
   }
 
   &-danger {
-    @apply bg-red-100 border-red-500 text-red-900;
+    @apply bg-danger-100 border-danger-500 text-danger-900;
   }
 
   &-accent-top {

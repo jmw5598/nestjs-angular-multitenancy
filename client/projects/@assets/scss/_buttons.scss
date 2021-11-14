@@ -6,28 +6,26 @@
   }
 
   &-primary {
-    @apply bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500;
+    @apply bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500;
   }
 
   &-secondary {
-    @apply text-black bg-gray-200 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-200;
+    @apply text-black bg-secondary-200 hover:bg-secondary-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary-200;
   }
 
   &-success {
-    @apply bg-green-500 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500;
+    @apply bg-success-500 hover:bg-success-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-success-500;
   }
 
   &-info {
-    @apply bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500;
+    @apply bg-info-500 hover:bg-info-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-info-500;
   }
 
   &-warning {
-    @apply bg-yellow-500 hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500;
+    @apply bg-warning-500 hover:bg-warning-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-warning-500;
   }
 
   &-danger {
-    @apply bg-red-500 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500;
+    @apply bg-danger-500 hover:bg-danger-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-danger-500;
   }
-
-  // @TODO - success, info, warning, danger styles
 }
