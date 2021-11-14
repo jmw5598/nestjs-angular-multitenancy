@@ -17,7 +17,7 @@ default:
   migrationsDir: ['src/database/migrations/common']
   subscribers: ['dist/database/subscribers/common/**/*.ts']
   subscribtersDir: ['src/database/subscribers/common/**/*.ts']
-  seeds: ['dist/database/seeds/common/**/*.seed.js'],
+  seeds: ['dist/database/seeds/common/**/*.seed.js']
 
 # Tennant
 tenant: 
@@ -36,4 +36,4 @@ tenant:
   migrationsDir: ['src/database/migrations/tenant']
   subscribers: ['dist/database/subscribers/tenant/**/*.ts']
   subscribtersDir: ['src/database/subscribers/tenant/**/*.ts']
-  seeds: ['dist/database/seeds/tenant/**/*.seed.js'],
+  seeds: ['dist/database/seeds/tenant/**/*.seed.js']
