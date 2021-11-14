@@ -216,6 +216,68 @@
           }
         }
       }
+    },
+    "xyz-auth": {
+      "projectType": "library",
+      "root": "projects/@xyz/auth",
+      "sourceRoot": "projects/@xyz/auth/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/@xyz/auth/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/@xyz/auth/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/@xyz/auth/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/@xyz/auth/src/test.ts",
+            "tsConfig": "projects/@xyz/auth/tsconfig.spec.json",
+            "karmaConfig": "projects/@xyz/auth/karma.conf.js"
+          }
+        }
+      }
+    },
+    "xyz-core": {
+      "projectType": "library",
+      "root": "projects/@xyz/core",
+      "sourceRoot": "projects/@xyz/core/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/@xyz/core/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/@xyz/core/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/@xyz/core/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/@xyz/core/src/test.ts",
+            "tsConfig": "projects/@xyz/core/tsconfig.spec.json",
+            "karmaConfig": "projects/@xyz/core/karma.conf.js"
+          }
+        }
+      }
     }
   },
   "defaultProject": "admin"

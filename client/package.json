@@ -9,6 +9,9 @@
     "build": "ng build",
     "build:admin": "ng build --project admin",
     "build:backoffice": "ng build --project backoffice",
+    "build:auth": "ng build --project xyz-auth",
+    "build:core": "ng build --project xyz-core",
+    "build:libs": "npm run build:core && npm run build:auth",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -44,6 +47,7 @@
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
+    "ng-packagr": "^12.0.0",
     "tailwindcss": "^2.2.19",
     "typescript": "~4.2.3"
   }
