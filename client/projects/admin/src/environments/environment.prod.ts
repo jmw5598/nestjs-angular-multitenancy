@@ -1,3 +1,9 @@
 export const environment = {
-  production: true
+  production: true,
+  auth: {
+    baseUrl: '/auth'
+  },
+  api: {
+    baseUrl: ''
+  }
 };

@@ -28,7 +28,7 @@
         "./projects/backoffice/src/app/*"
       ],
       "@xyz/admin/env/*": [
-        "./projects/admin/src/env/*"
+        "./projects/admin/src/environments/*"
       ]
     }
   },
