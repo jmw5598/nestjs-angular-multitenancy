@@ -3,8 +3,8 @@ import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/c
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { AuthenticatedStatus } from '../enums';
 import { AuthenticationState, AuthenticationStore } from '../store/authentication.store';
+import { AuthenticatedStatus } from '@xyz/core';
 
 @Injectable()
 export class JwtTokenInterceptor implements HttpInterceptor, OnDestroy {

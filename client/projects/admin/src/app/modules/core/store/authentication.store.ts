@@ -1,9 +1,15 @@
 import { Injectable } from "@angular/core";
 import { take } from 'rxjs/operators';
-import { AuthenticatedStatus, ResponseStatus } from '../enums';
-import { AuthenticatedUser, ResponseMessage, UserCredentials } from '../models';
+
 import { AuthenticationService } from '../services';
-import { AbstractStore } from './abstract-state.store';
+
+import { 
+  AbstractStore, 
+  AuthenticatedStatus, 
+  AuthenticatedUser, 
+  ResponseMessage, 
+  ResponseStatus, 
+  UserCredentials } from '@xyz/core';
 
 export interface AuthenticationState {
   loginResponseMessage: ResponseMessage | null,

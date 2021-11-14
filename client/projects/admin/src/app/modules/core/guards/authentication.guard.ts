@@ -4,8 +4,8 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } fro
 import { Observable } from 'rxjs';
 import { take, map } from 'rxjs/operators';
 
-import { AuthenticatedStatus } from '../enums';
 import { AuthenticationState, AuthenticationStore } from '../store/authentication.store';
+import { AuthenticatedStatus } from '@xyz/core';
 
 @Injectable({
   providedIn: 'root'

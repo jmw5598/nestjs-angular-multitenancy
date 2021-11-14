@@ -1,9 +1,12 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ForgotPassword } from '@xyz/admin/modules/core/models';
-import { isFormControlValid, markFormGroupTouched } from '@xyz/admin/modules/core/utils';
+
 import { buildForgotPasswordForm } from './forgot-password-form.builder';
+import { 
+  ForgotPassword,
+  isFormControlValid,
+  markFormGroupTouched } from '@xyz/core';
 
 @Component({
   selector: 'xyz-forgot-password',

@@ -1,13 +1,18 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthenticatedStatus } from '@xyz/admin/modules/core/enums';
-import { ResponseMessage, UserCredentials } from '@xyz/admin/modules/core/models';
-import { AuthenticationState, AuthenticationStore } from '@xyz/admin/modules/core/store/authentication.store';
-import { isFormControlValid, markFormGroupTouched } from '@xyz/admin/modules/core/utils';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+
 import { buildLoginForm } from './login-form.builder';
+import { AuthenticationState, AuthenticationStore } from '@xyz/admin/modules/core/store/authentication.store';
+import { 
+  AuthenticatedStatus,
+  ResponseMessage, 
+  ResponseStatus,
+  UserCredentials,
+  isFormControlValid,
+  markFormGroupTouched } from '@xyz/core';
 
 @Component({
   selector: 'xyz-login',
