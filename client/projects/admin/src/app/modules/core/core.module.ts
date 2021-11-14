@@ -8,8 +8,6 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     HttpClientModule
   ],
-  providers: [
-    { provide: Window, useValue: window }
-  ]
+  providers: []
 })
 export class CoreModule { }

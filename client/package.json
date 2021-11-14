@@ -9,9 +9,10 @@
     "build": "ng build",
     "build:admin": "ng build --project admin",
     "build:backoffice": "ng build --project backoffice",
+    "build:loading": "ng build --project xyz-loading",
     "build:auth": "ng build --project xyz-auth",
     "build:core": "ng build --project xyz-core",
-    "build:libs": "npm run build:core && npm run build:auth",
+    "build:libs": "npm run build:loading && npm run build:core && npm run build:auth",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },

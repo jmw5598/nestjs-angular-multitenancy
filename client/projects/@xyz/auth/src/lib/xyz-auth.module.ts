@@ -14,6 +14,8 @@ import { LoggingOutComponent } from './pages/logging-out/logging-out.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthenticationStore } from './store/authentication.store';
 
+import { XyzLoadingModule } from '@xyz/loading';
+
 @NgModule({
   declarations: [
     AuthenticationComponent,
@@ -26,7 +28,8 @@ import { AuthenticationStore } from './store/authentication.store';
     CommonModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    XyzLoadingModule
   ],
   exports: [
     AuthenticationComponent,

@@ -40,6 +40,10 @@
       "@xyz/core": [
         "dist/@xyz/core/xyz-core",
         "dist/@xyz/core"
+      ],
+      "@xyz/loading": [
+        "dist/@xyz/loading/xyz-loading",
+        "dist/@xyz/loading"
       ]
     }
   },
