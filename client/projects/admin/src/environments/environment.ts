@@ -4,11 +4,13 @@
 
 export const environment = {
   production: false,
-  auth: {
-    baseUrl: 'http://localhost:3000/auth'
-  },
   api: {
-    baseUrl: 'http://localhost:3000'
+    protocol: 'http',
+    subdomain: '',
+    host: 'localhost',
+    port: '3000',
+    authSlug: 'auth',
+    apiSlug: ''
   }
 };
 

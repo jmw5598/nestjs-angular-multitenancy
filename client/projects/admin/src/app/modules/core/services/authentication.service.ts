@@ -6,8 +6,8 @@ import { tap } from 'rxjs/operators';
 import { AuthenticatedUser } from '../models/authenticated-user.model'; 
 import { UserCredentials } from '../models/user-credentials.model';
 
-import { environment } from '@xyz/admin/env/environment';
 import { UserSettings } from '../models/user-settings.model';
+import { EnvironmentService } from './environment.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,14 +15,15 @@ import { UserSettings } from '../models/user-settings.model';
 export class AuthenticationService {
   private readonly AUTH_USER_KEY: string = "AUTHUSER";
   private readonly REMEMBER_ME_KEY: string = "REMEMBERME";
-  private _baseUrl: string;
 
-  constructor(private _http: HttpClient) {
-    this._baseUrl = environment.auth.baseUrl;
-  }
+  constructor(
+    private _http: HttpClient, 
+    private _env: EnvironmentService
+  ) { }
 
   public authenticateUser(credentials: UserCredentials): Observable<AuthenticatedUser> {
-    return this._http.post<AuthenticatedUser>(`${this._baseUrl}/login`, credentials)
+    const baseUrl: string = this._env.getAuthBaseUrl();
+    return this._http.post<AuthenticatedUser>(`${baseUrl}/login`, credentials)
       .pipe(tap((user: AuthenticatedUser) => {
         this._handleRememberMe(credentials);
         this._handleAuthenticatedUser(user);
@@ -30,7 +31,8 @@ export class AuthenticationService {
   }
   
   public refreshToken(accessToken: string, refreshToken: string): Observable<AuthenticatedUser> {
-    return this._http.post<AuthenticatedUser>(`${this._baseUrl}/token`, {
+    const baseUrl: string = this._env.getAuthBaseUrl();
+    return this._http.post<AuthenticatedUser>(`${baseUrl}/token`, {
       accessToken: accessToken,
       refreshToken: refreshToken
     });

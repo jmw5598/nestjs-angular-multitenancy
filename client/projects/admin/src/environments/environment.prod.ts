@@ -1,9 +1,11 @@
 export const environment = {
   production: true,
-  auth: {
-    baseUrl: '/auth'
-  },
   api: {
-    baseUrl: ''
+    protocol: 'http',
+    subdomain: '',
+    host: 'localhost',
+    port: '3000',
+    authSlug: 'auth',
+    apiSlug: ''
   }
 };

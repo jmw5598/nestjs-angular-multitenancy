@@ -16,7 +16,8 @@ const jwtTokenInterceptor = {
     HttpClientModule
   ],
   providers: [
-    jwtTokenInterceptor
+    jwtTokenInterceptor,
+    { provide: Window, useValue: window }
   ]
 })
 export class CoreModule { }
