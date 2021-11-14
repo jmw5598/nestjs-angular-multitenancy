@@ -7,7 +7,7 @@ import { AuthenticatedUser } from '../models/authenticated-user.model';
 import { UserCredentials } from '../models/user-credentials.model';
 
 import { UserSettings } from '../models/user-settings.model';
-import { EnvironmentService } from './environment.service';
+import { EnvironmentService } from '@xyz/core';
 
 @Injectable({
   providedIn: 'root'

@@ -1,14 +1,15 @@
 import { Inject, Injectable } from '@angular/core';
 
-import { environment } from '@xyz/admin/env/environment';
+import { XyzCoreConfiguration, XYZ_CORE_CONFIGURATION } from '../xyz-core-configuration.model';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class EnvironmentService {
-  private readonly _env = environment;
-
-  constructor(@Inject(Window) private _window: Window) { }
+  constructor(
+    @Inject(Window) private _window: Window,
+    @Inject(XYZ_CORE_CONFIGURATION) private _env: XyzCoreConfiguration
+  ) {
+    console.log("environemnt service in core lib ", this._env);
+  }
 
   public getApiBaseUrl(): string {
     const hostParts: string[] = this._window?.location?.host?.split('.');

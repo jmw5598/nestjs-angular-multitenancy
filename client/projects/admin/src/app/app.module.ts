@@ -5,16 +5,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './modules/core/core.module';
 
+import { environment } from '@xyz/admin/env/environment';
+import { XyzCoreModule } from '@xyz/core';
+
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
     BrowserModule,
+    XyzCoreModule.forRoot({...environment}),
     CoreModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [{ provide: Window, useValue: window }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

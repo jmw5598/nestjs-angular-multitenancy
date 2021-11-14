@@ -30,13 +30,13 @@
       "@xyz/admin/env/*": [
         "./projects/admin/src/environments/*"
       ],
-      "xyz-auth": [
-        "dist/xyz-auth/xyz-auth",
-        "dist/xyz-auth"
+      "@xyz/auth": [
+        "dist/@xyz/auth/xyz-auth",
+        "dist/@xyz/auth"
       ],
-      "xyz-core": [
-        "dist/xyz-core/xyz-core",
-        "dist/xyz-core"
+      "@xyz/core": [
+        "dist/@xyz/core/xyz-core",
+        "dist/@xyz/core"
       ]
     }
   },

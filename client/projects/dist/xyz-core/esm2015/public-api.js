@@ -1,5 +1,0 @@
-/*
- * Public API Surface of xyz-core
- */
-export * from './lib/xyz-core.module';
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHVibGljLWFwaS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uL0B4eXovY29yZS9zcmMvcHVibGljLWFwaS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTs7R0FFRztBQUVILGNBQWMsdUJBQXVCLENBQUMiLCJzb3VyY2VzQ29udGVudCI6WyIvKlxuICogUHVibGljIEFQSSBTdXJmYWNlIG9mIHh5ei1jb3JlXG4gKi9cblxuZXhwb3J0ICogZnJvbSAnLi9saWIveHl6LWNvcmUubW9kdWxlJztcbiJdfQ==
