@@ -3,40 +3,16 @@ import { CommonModule } from '@angular/common';
 
 import { ApplicationRoutingModule } from './application-routing.module';
 import { ApplicationComponent } from './pages/application/application.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { NgIconsModule } from '@ng-icons/core';
-
-import { 
-  HeroCalendar, 
-  HeroChartBar, 
-  HeroChevronDown,
-  HeroBell,
-  HeroFolder,
-  HeroUser,
-  HeroMail,
-  HeroOfficeBuilding,
-  HeroLogout
-} from '@ng-icons/heroicons';
+import { XyzNavbarModule } from '../shared/modules/navbar/navbar.module';
 
 @NgModule({
   declarations: [
-    ApplicationComponent,
-    NavbarComponent
+    ApplicationComponent
   ],
   imports: [
     CommonModule,
     ApplicationRoutingModule,
-    NgIconsModule.withIcons({
-      HeroCalendar,
-      HeroChevronDown,
-      HeroChartBar,
-      HeroBell,
-      HeroFolder,
-      HeroUser,
-      HeroMail,
-      HeroOfficeBuilding,
-      HeroLogout
-    })
+    XyzNavbarModule
   ]
 })
 export class ApplicationModule { }

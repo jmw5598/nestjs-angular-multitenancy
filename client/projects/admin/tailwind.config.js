@@ -1,4 +1,5 @@
-const colors = require('tailwindcss/colors')
+const colors = require('tailwindcss/colors');
+const theme = require('tailwindcss/defaultTheme');
 
 module.exports = {
   prefix: '',
@@ -9,25 +10,16 @@ module.exports = {
   },
   darkMode: 'class', // or 'media' or 'class'
   theme: {
-    colors: {
-      primary: colors.indigo,
-      secondary: colors.gray,
-      success: colors.green,
-      info: colors.blue,
-      warning: colors.yellow,
-      danger: colors.red,
-      indigo: colors.indigo,
-      green: colors.green,
-      blue: colors.green,
-      yellow: colors.yellow,
-      red: colors.red,
-      gray: colors.gray,
-      black: colors.black,
-      white: colors.white,
-      teal: colors.teal,
-      transparent: colors.transparent
+    extend: {
+      colors: {
+        primary: colors.indigo,
+        secondary: colors.gray,
+        success: colors.green,
+        info: colors.blue,
+        warning: colors.yellow,
+        danger: colors.red,
+      }
     },
-    extend: {},
   },
   variants: {
     extend: {},
