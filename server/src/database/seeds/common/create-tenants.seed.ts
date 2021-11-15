@@ -9,29 +9,33 @@ const tenantSeeds: Tenant[] = [
     updatedAt: new Date(),
     identifier: uuid(), 
     domain: 'localhost', 
-    connectionString: 'postgresql://tenantadmin:tenantadmin@localhost:5432/tenant_admin'
+    connectionString: 'postgresql://tenantadmin:tenantadmin@localhost:5432/tenant_admin',
+    isLockedOut: false
   } as Tenant,
   {
     createdAt: new Date(),
     updatedAt: new Date(),
     identifier: uuid(), 
     domain: 'admin', 
-    connectionString: 'postgresql://tenantadmin:tenantadmin@localhost:5432/tenant_admin'
+    connectionString: 'postgresql://tenantadmin:tenantadmin@localhost:5432/tenant_admin',
+    isLockedOut: false
   } as Tenant,
   {
     createdAt: new Date(),
     updatedAt: new Date(),
     identifier: uuid(), 
     domain: 'tenant1', 
-    connectionString: 'postgresql://tenant1:tenant1@localhost:5432/tenant_1'
+    connectionString: 'postgresql://tenant1:tenant1@localhost:5432/tenant_1',
+    isLockedOut: false
   } as Tenant,
   {
     createdAt: new Date(),
     updatedAt: new Date(),
     identifier: uuid(), 
     domain: 'tenant2', 
-    connectionString: 'postgresql://tenant2:tenant2@localhost:5432/tenant_2'
-  } as Tenant,
+    connectionString: 'postgresql://tenant2:tenant2@localhost:5432/tenant_2',
+    isLockedOut: false
+  } as Tenant
 ];
 
 export default class CreateTenants implements Seeder {

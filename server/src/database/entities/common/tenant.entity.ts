@@ -1,4 +1,4 @@
-import { Column, Entity, Index, OneToOne } from "typeorm";
+import { Column, Entity, Generated, Index, OneToOne } from "typeorm";
 import { BaseEntity } from "../base.entity";
 import { Account } from "./account.entity";
 
@@ -6,6 +6,7 @@ import { Account } from "./account.entity";
 export class Tenant extends BaseEntity {
   @Column({ type: 'uuid' })
   @Index()
+  @Generated('uuid')
   public identifier: string;
 
   @Column()
@@ -13,6 +14,9 @@ export class Tenant extends BaseEntity {
 
   @Column({ name: 'connection_string' })
   public connectionString: string;
+
+  @Column({ name: 'is_locked_out '})
+  public isLockedOut: boolean;
 
   @OneToOne(type => Account, account => account.tenant)
   public account: Account;
