@@ -29,8 +29,7 @@ export class User extends BaseEntity {
   @Column({ name: 'is_locked_out' })
   public isLockedOut: boolean;
 
-  @OneToOne(type => Profile, profile => profile.user, { nullable: false })
-  @JoinColumn({ name: 'profile_id' })
+  @OneToOne(type => Profile, profile => profile.user)
   public profile: Profile;
 
   @ManyToMany(type => Role, role => role.users)

@@ -18,6 +18,7 @@ export class Profile extends BaseEntity {
   @JoinColumn({ name: 'address_id' })
   public address: Address;
 
-  @OneToOne(type => User, user => user.profile)
+  @OneToOne(type => User, user => user.profile, { nullable: false })
+  @JoinColumn({ name: 'user_id' })
   public user: User;
 }
