@@ -16,7 +16,10 @@ export interface NavigationLink {
   selector: 'xyz-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    class: 'navbar'
+  }
 })
 export class NavbarComponent implements OnInit {
   public links: NavigationLink[] = DEFAULT_NAVIGATION_LINKS;

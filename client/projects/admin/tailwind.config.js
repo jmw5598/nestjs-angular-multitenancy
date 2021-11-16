@@ -1,4 +1,5 @@
-const colors = require('tailwindcss/colors')
+const colors = require('tailwindcss/colors');
+const theme = require('tailwindcss/defaultTheme');
 
 const extendedColors = {
   primary: {
