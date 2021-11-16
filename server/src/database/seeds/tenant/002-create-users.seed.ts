@@ -1,10 +1,5 @@
-import { isEmail } from "class-validator";
-import { connect } from "http2";
-import { Address } from "src/database/entities/tenant/address.entity";
-import { Profile } from "src/database/entities/tenant/profile.entity";
-import { Role } from "src/database/entities/tenant/role.entity";
 import { User } from "src/database/entities/tenant/user.entity";
-import { Connection, Repository } from "typeorm";
+import { Connection } from "typeorm";
 import { Factory, Seeder } from "typeorm-seeding";
 import { v4 as uuid } from 'uuid';
 
