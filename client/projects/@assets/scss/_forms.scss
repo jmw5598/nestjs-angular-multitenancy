@@ -6,7 +6,7 @@
   }
 
   .form-control {
-    @apply appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm;
+    @apply appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-primary-500 focus:border-primary-500 focus:z-10 sm:text-sm;
   
     &.form-control-invalid {
       @apply border-red-500;
@@ -30,7 +30,7 @@
   }
 
   .form-control-check {
-    @apply h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded;
+    @apply h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded;
   }
 }
 

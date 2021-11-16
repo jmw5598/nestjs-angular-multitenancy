@@ -1,69 +1,61 @@
-<h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+<h2 class="mt-6 mb-6 text-3xl font-extrabold text-gray-900">
   Sign in to your account
 </h2>
-<!-- <p class="mt-2 text-center text-sm text-gray-600">
-  Or
-  <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">
-    start your 14-day free trial
-  </a>
-</p> -->
-<div class="card card-default">
-  <div *ngIf="loginResponseMessage" class="alert alert-warning alert-round-lg alert-border mb-4" role="alert">
-    <p>{{ loginResponseMessage?.message }}</p>
-  </div>
-  <form [formGroup]="loginForm" class="space-y-6" (ngSubmit)="submitForm(loginForm.value)" novalidate>
-    <div class="rounded-md -space-y-px">
-      <div class="form-group">
-        <label for="email" class="form-control-label">Email</label>
-        <input 
-          id="email"
-          name="email"
-          type="email" 
-          autocomplete="email" 
-          formControlName="username"
-          required 
-          class="form-control"
-          [ngClass]="{ 'form-control-invalid' : isFormControlValid(loginForm, 'username') }">
-        <p class="form-control-feedback">
-          Invalid email format!
-        </p>
-      </div>
-      <div class="form-group">
-        <label for="password" class="form-control-label">Password</label>
-        <input 
-          id="password"
-          name="password"
-          type="password"  
-          formControlName="password"
-          class="form-control"
-          [ngClass]="{ 'form-control-invalid' : isFormControlValid(loginForm, 'password') }">
-        <p class="form-control-feedback">
-          Password is required!
-        </p>
-      </div>
-    </div>
-
-    <div class="flex items-center justify-between">
-      <div class="form-group-check">
-        <input 
-            id="rememberMe" 
-            name="rememberMe" 
-            type="checkbox" 
-            formControlName="rememberMe"
-            class="form-control-check">
-        <label for="rememberMe" class="form-control-check-label">
-          Remember me
-        </label>
-      </div>
-
-      <div class="text-sm">
-        <a href="javscript.void(0)" routerLink="/auth/forgot-password" class="link link-primary">
-          Forgot your password?
-        </a>
-      </div>
-    </div>
-    <button type="submit" class="btn btn-full btn-primary">
-      Sign in
-    </button>
-  </form>
+<div *ngIf="loginResponseMessage" class="alert alert-warning alert-round-lg alert-border mb-4" role="alert">
+  <p>{{ loginResponseMessage?.message }}</p>
 </div>
+<form [formGroup]="loginForm" class="space-y-6" (ngSubmit)="submitForm(loginForm.value)" novalidate>
+  <div class="rounded-md -space-y-px">
+    <div class="form-group">
+      <label for="email" class="form-control-label">Email</label>
+      <input 
+        id="email"
+        name="email"
+        type="email" 
+        autocomplete="email" 
+        formControlName="username"
+        required 
+        class="form-control"
+        [ngClass]="{ 'form-control-invalid' : isFormControlValid(loginForm, 'username') }">
+      <p class="form-control-feedback">
+        Invalid email format!
+      </p>
+    </div>
+    <div class="form-group">
+      <label for="password" class="form-control-label">Password</label>
+      <input 
+        id="password"
+        name="password"
+        type="password"  
+        formControlName="password"
+        class="form-control"
+        [ngClass]="{ 'form-control-invalid' : isFormControlValid(loginForm, 'password') }">
+      <p class="form-control-feedback">
+        Password is required!
+      </p>
+    </div>
+  </div>
+
+  <div class="flex items-center justify-between">
+    <div class="form-group-check">
+      <input 
+          id="rememberMe" 
+          name="rememberMe" 
+          type="checkbox" 
+          formControlName="rememberMe"
+          class="form-control-check">
+      <label for="rememberMe" class="form-control-check-label">
+        Remember me
+      </label>
+    </div>
+
+    <div class="text-sm">
+      <a href="javscript.void(0)" routerLink="/auth/forgot-password" class="link link-primary">
+        Forgot your password?
+      </a>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-full btn-primary">
+    Sign in
+  </button>
+</form>
