@@ -1,7 +1,7 @@
 <h2 class="mt-6 mb-6 text-3xl font-extrabold text-gray-900">
   Sign in to your account
 </h2>
-<div *ngIf="loginResponseMessage" class="alert alert-warning alert-round-lg alert-border mb-4" role="alert">
+<div *ngIf="loginResponseMessage" class="alert alert-warning alert-accent-left projects_admin_src_app_modules_application_application_module_ts.js      alert-border mb-4" role="alert">
   <p>{{ loginResponseMessage?.message }}</p>
 </div>
 <form [formGroup]="loginForm" class="space-y-6" (ngSubmit)="submitForm(loginForm.value)" novalidate>
