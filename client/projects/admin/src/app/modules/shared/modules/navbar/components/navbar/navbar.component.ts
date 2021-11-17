@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostBinding, OnInit } from '@angular/core';
 import { fromEvent } from 'rxjs';
 
 import { DEFAULT_NAVIGATION_LINKS } from './navbar-links.mock';
@@ -17,11 +17,11 @@ export interface NavigationLink {
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: {
-    class: 'navbar'
-  }
 })
 export class NavbarComponent implements OnInit {
+  @HostBinding('class')
+  public hostClasses: string = 'navbar';
+  
   public links: NavigationLink[] = DEFAULT_NAVIGATION_LINKS;
 
   constructor(
