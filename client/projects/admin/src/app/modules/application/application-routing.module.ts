@@ -12,6 +12,14 @@ const routes: Routes = [
         loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule)
       },
       {
+        path: 'crm',
+        loadChildren: () => import('./modules/crm/crm.module').then(m => m.CrmModule)
+      },
+      {
+        path: 'calendar',
+        loadChildren: () => import('./modules/calendar/calendar.module').then(m => m.CalendarModule)
+      },
+      {
         path: '**',
         redirectTo : 'dashboard',
         pathMatch: 'full',

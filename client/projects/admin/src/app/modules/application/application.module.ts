@@ -15,12 +15,16 @@ import {
   HeroBellSolid,
   HeroFolder,
   HeroUser,
+  HeroUserGroup,
   HeroMail,
   HeroMailSolid,
   HeroOfficeBuilding,
   HeroLogout,
   HeroMenu,
-  HeroSearch
+  HeroSearch,
+  HeroFolderOpen,
+  HeroCurrencyDollar,
+  HeroCollection
 } from '@ng-icons/heroicons';
 
 @NgModule({
@@ -38,6 +42,7 @@ import {
       HeroBell,
       HeroFolder,
       HeroUser,
+      HeroUserGroup,
       HeroMail,
       HeroOfficeBuilding,
       HeroLogout,
@@ -45,7 +50,10 @@ import {
       HeroCalendarSolid,
       HeroMailSolid,
       HeroMenu,
-      HeroSearch
+      HeroSearch,
+      HeroFolderOpen,
+      HeroCurrencyDollar,
+      HeroCollection
     })
   ]
 })

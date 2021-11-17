@@ -3,40 +3,50 @@ import { NavigationLink } from './components/navbar/navbar.component';
 const dashboardLinks: NavigationLink = {
   label: 'Dashboard',
   isExpanded: false,
+  routerLink: '/dashboard',
+  iconName: 'hero-chart-bar'
+}
+
+const crmLinks: NavigationLink = {
+  label: 'CRM',
+  isExpanded: false,
   children: [
     {
-      label: 'Overview',
+      label: 'Accounts',
       description: 'Get a better understanding of where your traffic is coming from.',
-      routerLink: '',
-      iconName: 'hero-chart-bar'
+      routerLink: '/crm/accounts',
+      iconName: 'hero-collection'
     },
     {
-      label: 'Calendar',
-      description: 'Company events, blah, stuff.',
-      routerLink: '',
-      iconName: 'hero-calendar'
+      label: 'Contacts',
+      description: 'Get a better understanding of where your traffic is coming from.',
+      routerLink: '/crm/contacts',
+      iconName: 'hero-user-group'
     },
     {
-      label: 'Notification',
-      description: 'Your notfications; Lorem ipsum dolor sit amet consectetur adipi.',
-      routerLink: '',
-      iconName: 'hero-bell'
+      label: 'Leads',
+      description: 'Get a better understanding of where your traffic is coming from.',
+      routerLink: '/crm/leads',
+      iconName: 'hero-folder-open'
     },
     {
-      label: 'Open Jobs',
-      description: 'Current open jobs, Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatem rerum repellendus incidunt vitae.',
-      routerLink: '',
-      iconName: 'hero-chart-bar'
-    },
-    {
-      label: 'Profile',
-      description: 'Modify and change your profile details. Lorem ipsum.',
-      routerLink: '',
-      iconName: 'hero-user'
+      label: 'Estimates',
+      description: 'Get a better understanding of where your traffic is coming from.',
+      routerLink: '/crm/estimates',
+      iconName: 'hero-currency-dollar'
     }
   ]
 }
 
+const calendarLinks: NavigationLink = {
+  label: 'Calendar',
+  description: 'Get a better understanding of where your traffic is coming from.',
+  routerLink: '/calendar',
+  iconName: 'hero-chart-bar'
+}
+
 export const DEFAULT_NAVIGATION_LINKS: NavigationLink[] = [
-  dashboardLinks
+  dashboardLinks,
+  crmLinks,
+  calendarLinks
 ];
