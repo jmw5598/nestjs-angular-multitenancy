@@ -1,3 +1,15 @@
 .navbar {
-  @apply relative w-screen p-0 bg-primary-500;
+  @apply flex justify-between items-center relative w-screen p-0 bg-primary-500 py-6 px-6 md:justify-start md:space-x-10;
+
+  .navbar-toggler {
+    @apply -mr-2 -my-2;
+
+    .navbar-toggler-btn {
+      @apply rounded-md p-2 inline-flex items-center justify-center text-white hover:text-primary-500 hover:bg-white;
+    }
+  }
+
+  .navbar-nav {
+    @apply hidden md:flex;
+  }
 }

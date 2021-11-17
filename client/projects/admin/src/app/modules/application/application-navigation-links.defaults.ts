@@ -1,4 +1,4 @@
-import { NavigationLink } from './navbar.component'
+import { NavigationLink } from './components/navbar/navbar.component';
 
 const dashboardLinks: NavigationLink = {
   label: 'Dashboard',

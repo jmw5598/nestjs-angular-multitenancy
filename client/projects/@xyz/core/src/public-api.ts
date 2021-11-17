@@ -27,3 +27,7 @@ export * from './lib/utils/forms.util';
 // Abstracts
 export * from './lib/abstracts/abstract-state.store';
 
+// Animations
+export * from './lib/animations/fade.animation';
+export * from './lib/animations/show-hide.animation';
+export * from './lib/animations/slide-up-down.animation';

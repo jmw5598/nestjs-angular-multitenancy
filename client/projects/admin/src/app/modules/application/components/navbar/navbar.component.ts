@@ -1,7 +1,9 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostBinding, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostBinding, Input, OnInit } from '@angular/core';
 import { fromEvent } from 'rxjs';
 
-import { DEFAULT_NAVIGATION_LINKS } from './navbar-links.mock';
+import { fadeAnimation } from '@xyz/core';
+
+import { DEFAULT_NAVIGATION_LINKS } from '../../application-navigation-links.defaults';
   
 export interface NavigationLink {
   label: string,
@@ -17,12 +19,23 @@ export interface NavigationLink {
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [fadeAnimation]
 })
 export class NavbarComponent implements OnInit {
   @HostBinding('class')
-  public hostClasses: string = 'navbar';
+  public get hostClasses(): string {
+    return 'navbar';
+  }
+
+  @Input()
+  public logoSrc: string = '';
+
+  @Input()
+  public logoRouterLink: string = '';
   
   public links: NavigationLink[] = DEFAULT_NAVIGATION_LINKS;
+
+  public isMobileShown: boolean = false;
 
   constructor(
     private _changeDetectorRef: ChangeDetectorRef
@@ -44,5 +57,10 @@ export class NavbarComponent implements OnInit {
     }
     this.links.forEach(link => link.isExpanded = false);
     link.isExpanded = !link.isExpanded;
+  }
+
+  public toggleMobile(): void {
+    console.log("showing mobile");
+    this.isMobileShown = !this.isMobileShown;
   }
 }
