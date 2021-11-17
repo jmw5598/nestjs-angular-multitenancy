@@ -60,7 +60,6 @@ export class NavbarComponent implements OnInit {
   }
 
   public toggleMobile(): void {
-    console.log("showing mobile");
     this.isMobileShown = !this.isMobileShown;
   }
 }

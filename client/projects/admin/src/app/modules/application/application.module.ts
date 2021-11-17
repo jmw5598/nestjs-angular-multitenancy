@@ -19,7 +19,8 @@ import {
   HeroMailSolid,
   HeroOfficeBuilding,
   HeroLogout,
-  HeroMenu
+  HeroMenu,
+  HeroSearch
 } from '@ng-icons/heroicons';
 
 @NgModule({
@@ -43,7 +44,8 @@ import {
       HeroBellSolid,
       HeroCalendarSolid,
       HeroMailSolid,
-      HeroMenu
+      HeroMenu,
+      HeroSearch
     })
   ]
 })

@@ -16,6 +16,12 @@
       <div *ngIf="isMobileShown" [@fadeAnimation] class="absolute z-10 right-0 mt-3 transform px-4 w-full ">
         <div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
           <div class="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
+            <div class="bg-primary-50 rounded-lg flex flex-row items-center">
+              <input 
+                  class="bg-transparent w-full border-none focus:shadow-none focus:ring-0 text-primary-600" 
+                  type="text"/>
+              <ng-icon class="text-primary-600 mr-4" name="hero-search"></ng-icon>
+            </div>
             <!-- <a *ngFor="let child of link?.children" href="#" class="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50">
               <ng-icon [name]="child?.iconName || ''" size="1.5em"></ng-icon>
               <div class="ml-4">
