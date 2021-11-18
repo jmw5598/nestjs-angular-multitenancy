@@ -9,7 +9,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    // canActivate: [AuthenticationGuard],
+    canActivate: [AuthenticationGuard],
     loadChildren: () => import('./modules/application/application.module').then(m => m.ApplicationModule)
   },
   {

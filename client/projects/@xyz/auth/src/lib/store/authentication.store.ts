@@ -33,23 +33,17 @@ export class AuthenticationStore extends AbstractStore<AuthenticationState> {
     this._authenticationService.authenticateUser(credentials)
       .pipe(take(1))
       .subscribe(
-        (authenticatedUser: AuthenticatedUser) => {
-          this.setState({
-            ...this._state,
-            loginResponseMessage: null,
-            authenticatedStatus: AuthenticatedStatus.AUTHENTICATED,
-            authenticatedUser: authenticatedUser
-          });
-        },
-        (error) => {
-          this.setState({
-            ...this._state,
-            loginResponseMessage: {
-              status: ResponseStatus.ERROR,
-              message: error.error.message
-            } as ResponseMessage
-          });
-        }
+        (authenticatedUser: AuthenticatedUser) => this._handleSuccessfulUserAuthentication(authenticatedUser),
+        (error) => this._handleErrorOnUserAuthentication(error)
+      );
+  }
+
+  public refreshToken(user: AuthenticatedUser): void {
+    this._authenticationService.refreshToken(user.accessToken, user.refreshToken)
+      .pipe(take(1))
+      .subscribe(
+        (authenticatedUser: AuthenticatedUser) => this._handleSuccessfulUserAuthentication(authenticatedUser),
+        (error) => this._handleErrorOnUserAuthentication(error)
       );
   }
 
@@ -57,7 +51,33 @@ export class AuthenticationStore extends AbstractStore<AuthenticationState> {
     this.setState({ ...initialAuthenticationState });
   }
 
+  public setAuthenticatedUser(authenticatedUser: AuthenticatedUser | null): void {
+    this.setState({
+      ...this._state,
+      authenticatedUser: authenticatedUser
+    });
+  }
+
   public resetState(): void {
     // @TODO
+  }
+
+  private _handleSuccessfulUserAuthentication(authenticatedUser: AuthenticatedUser): void {
+    this.setState({
+      ...this._state,
+      loginResponseMessage: null,
+      authenticatedStatus: AuthenticatedStatus.AUTHENTICATED,
+      authenticatedUser: authenticatedUser
+    });
+  }
+
+  private _handleErrorOnUserAuthentication(error: any): void {
+    this.setState({
+      ...this._state,
+      loginResponseMessage: {
+        status: ResponseStatus.ERROR,
+        message: error.error.message
+      } as ResponseMessage
+    });
   }
 }

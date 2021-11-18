@@ -19,7 +19,10 @@ export * from './lib/pages/logging-out/logging-out.component';
 export * from './lib/pages/login/login.component';
 
 // Services
-// export * from './lib/services/authentication.service';
+export * from './lib/services/authentication.service';
 
 // Stores
 export * from './lib/store/authentication.store';
+
+// Initializers
+export * from './lib/initializers/authenticated-user.initializer';

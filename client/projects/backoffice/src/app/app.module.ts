@@ -1,19 +1,31 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
+import { environment } from '@xyz/backoffice/env/environment';
+import { XyzCoreModule } from '@xyz/core';
+import { 
+  XyzAuthModule, 
+  JwtTokenInterceptor, 
+  AuthenticationStore, 
+  AuthenticationService, 
+  authenticatedUserInitializer } from '@xyz/auth';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
-import { environment } from '@xyz/backoffice/env/environment';
-import { JwtTokenInterceptor, XyzAuthModule } from '@xyz/auth';
-import { XyzCoreModule } from '@xyz/core';
 
 const jwtTokenInterceptor = {
   provide: HTTP_INTERCEPTORS,
   useClass: JwtTokenInterceptor,
   multi: true
 }
+
+const authenticatedUserAppInitializer = { 
+  provide: APP_INITIALIZER, 
+  useFactory: authenticatedUserInitializer, 
+  multi: true,
+  deps: [AuthenticationStore, AuthenticationService]
+};
 
 @NgModule({
   declarations: [
@@ -27,6 +39,7 @@ const jwtTokenInterceptor = {
   ],
   providers: [
     jwtTokenInterceptor,
+    // authenticatedUserAppInitializer,
     { provide: Window, useValue: window }
   ],
   bootstrap: [AppComponent]
