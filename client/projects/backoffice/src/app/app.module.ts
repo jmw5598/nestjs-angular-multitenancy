@@ -39,7 +39,7 @@ const authenticatedUserAppInitializer = {
   ],
   providers: [
     jwtTokenInterceptor,
-    // authenticatedUserAppInitializer,
+    authenticatedUserAppInitializer,
     { provide: Window, useValue: window }
   ],
   bootstrap: [AppComponent]

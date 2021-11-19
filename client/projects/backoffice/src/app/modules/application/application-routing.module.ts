@@ -8,6 +8,14 @@ const routes: Routes = [
     component: ApplicationComponent,
     children: [
       {
+        path: 'dashboard',
+        loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule)
+      },
+      {
+        path: 'calendar',
+        loadChildren: () => import('./modules/calendar/calendar.module').then(m => m.CalendarModule)
+      },
+      {
         path: '**',
         redirectTo : 'dashboard',
         pathMatch: 'full',

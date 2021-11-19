@@ -10,20 +10,20 @@ import {
 
 const routes: Routes = [
   {
+    path: 'logging-in',
+    component: LoggingInComponent
+  },
+  {
+    path: 'logging-out',
+    component: LoggingOutComponent
+  },
+  {
     path: '',
     component: AuthenticationComponent,
     children: [
       {
         path: 'login',
         component: LoginComponent
-      },
-      {
-        path: 'logging-in',
-        component: LoggingInComponent
-      },
-      {
-        path: 'logging-out',
-        component: LoggingOutComponent
       },
       {
         path: 'forgot-password',
