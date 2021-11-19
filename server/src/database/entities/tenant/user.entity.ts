@@ -1,11 +1,12 @@
 
   
-import { Entity, Column, ManyToMany, JoinTable, BeforeInsert, OneToOne, JoinColumn, OneToMany, Generated, Index } from 'typeorm';
+import { Entity, Column, ManyToMany, JoinTable, OneToOne, OneToMany, Generated, Index } from 'typeorm';
 import { BaseEntity } from '../base.entity';
 import { Role } from './role.entity';
 import { RefreshToken } from './refresh-token.entity';
 import { Profile } from './profile.entity';
 import { Claim } from './claim.entity';
+import { DeviceCode } from './device-code.entity';
 
 @Entity({ name: 'app_user' })
 export class User extends BaseEntity {
@@ -32,7 +33,7 @@ export class User extends BaseEntity {
   @OneToOne(type => Profile, profile => profile.user)
   public profile: Profile;
 
-  @ManyToMany(type => Role, role => role.users)
+  @ManyToMany(type => Role, { eager: false })
   @JoinTable({ 
     name: 'user_role',
     joinColumn: { name: 'user_id', referencedColumnName: "id" },
@@ -40,13 +41,21 @@ export class User extends BaseEntity {
   })
   public roles: Role[];
 
-  @ManyToMany(type => Claim, claim => claim.users)
+  @ManyToMany(type => Claim, { eager: false })
   @JoinTable({ 
     name: 'user_claim',
     joinColumn: { name: 'user_id', referencedColumnName: "id" },
     inverseJoinColumn: { name: 'claim_id', referencedColumnName: "id" }
   })
   public claims: Claim[];
+
+  @ManyToMany(type => DeviceCode, { eager: false })
+  @JoinTable({ 
+    name: 'user_device_code',
+    joinColumn: { name: 'user_id', referencedColumnName: "id" },
+    inverseJoinColumn: { name: 'device_code_id', referencedColumnName: "id" }
+  })
+  public deviceCodes: DeviceCode[];
 
   @OneToMany(type => RefreshToken, token => token.id)
   public refreshTokens: RefreshToken[];
