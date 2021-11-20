@@ -7,6 +7,7 @@ import { TenantResolutionMiddleware } from './common/multitenancy/tenant-resolut
 import { MultitenancyModule } from './common/multitenancy/multitenancy.module';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { UsersModule } from './users/users.module';
+import { AccountsModule } from './accounts/accounts.module';
 
 @Module({
   imports: [
@@ -15,7 +16,8 @@ import { UsersModule } from './users/users.module';
     TenantsModule,
     MultitenancyModule,
     AuthenticationModule,
-    UsersModule
+    UsersModule,
+    AccountsModule
   ],
   controllers: [],
   providers: [],
