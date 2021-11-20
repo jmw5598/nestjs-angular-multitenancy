@@ -11,8 +11,19 @@
     "lib": ["es2017", "dom"],
     "baseUrl": ".",
     "paths": {
-      "~/*": ["src/*"],
-      "@/*": ["src/*"]
+      "@xyz/mobile/*": [
+        "src/*"
+      ],
+      "@xyz/core": [
+        "dist/@xyz/core/xyz-core",
+        "dist/@xyz/core"
+      ],
+      "~/*": [
+        "src/*"
+      ],
+      "@/*": [
+        "src/*"
+      ]
     }
   },
   "include": ["src/tests/**/*.ts", "src/**/*.ios.ts", "src/**/*.android.ts"],
