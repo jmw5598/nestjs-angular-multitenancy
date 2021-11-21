@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { CalendarOptions } from '@fullcalendar/angular';
 
 @Component({
   selector: 'xyz-calendar',
@@ -7,10 +8,12 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CalendarComponent implements OnInit {
+  public calendarOptions: CalendarOptions = {
+    initialView: 'dayGridMonth'
+  };
 
   constructor() { }
 
   ngOnInit(): void {
   }
-
 }

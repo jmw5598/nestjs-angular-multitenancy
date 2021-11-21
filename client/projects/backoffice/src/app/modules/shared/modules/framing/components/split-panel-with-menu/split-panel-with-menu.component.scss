@@ -1,0 +1,16 @@
+:host {
+  height: calc(100vh - 88px);
+  .split-panel-menu {
+    width: 72px;
+  }
+
+  .split-panel-menu-extension {
+    width: 300px;
+  }
+
+  .split-panel-content {
+    overflow-y: auto;
+  }
+}
+  
+

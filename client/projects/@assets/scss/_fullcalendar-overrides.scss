@@ -1,0 +1,32 @@
+// Full Calendar Overriders
+.fc {
+  // @apply h-full;
+}
+
+.fc-toolbar {
+  padding: 1rem;
+  margin-bottom: 0 !important;
+  @apply border-b border-gray-200;
+
+  .fc-toolbar-chunk {
+    .fc-toolbar-title {
+      @apply font-bold text-black;
+    }
+  }
+}
+
+.fc-scrollgrid {
+  &.table-bordered {
+    border: 0 !important;
+  }
+}
+
+.fc-col-header {
+  height: 52px;
+  line-height: 52px;
+  vertical-align: middle;
+}
+
+.fc-theme-standard .fc-scrollgrid {
+  border: none !important;
+}
