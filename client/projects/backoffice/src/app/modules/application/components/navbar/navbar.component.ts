@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, HostBinding, Input, ChangeDetectorRef } from '@angular/core';
+import { fadeAnimation } from '@xyz/core';
 import { fromEvent } from 'rxjs';
 import { DEFAULT_NAVIGATION_LINKS } from '../../application-navigation-links.defaults';
 
@@ -15,7 +16,8 @@ export interface NavigationLink {
   selector: 'xyz-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [fadeAnimation]
 })
 export class NavbarComponent implements OnInit {
   @HostBinding('class')

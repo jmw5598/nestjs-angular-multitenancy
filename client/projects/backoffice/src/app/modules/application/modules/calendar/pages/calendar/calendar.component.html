@@ -1,6 +1,15 @@
-<xyz-split-panel-with-menu>
-  <div xyzSplitPanelMenu class="bg-primary-50 h-full w-full border-r border-primary-200">
-    Menu herer
+<xyz-split-panel-with-menu [@fadeAnimation]>
+  <div xyzSplitPanelMenu class="bg-white h-full w-full border-r border-gray-200 m-0 p-0">
+    
+    <div class="bg-white flex flex-col p-2">
+      <a  href="javascript.void(0)"  class=" py-3 flex items-center justify-center rounded-lg hover:bg-gray-100">
+        <ng-icon class="text-primary-500" name="hero-calendar" size="1.5em"></ng-icon>
+      </a>
+      <a  href="javascript.void(0)"  class=" py-3 flex items-center justify-center rounded-lg hover:bg-gray-100">
+        <ng-icon class="text-primary-500" name="hero-cog" size="1.5em"></ng-icon>
+      </a>
+    </div>
+
   </div>
   <div xyzSplitPanelContent class="bg-white h-full w-full border-l border-gray-200">
     <full-calendar 

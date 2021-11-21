@@ -8,6 +8,12 @@ import { CalendarComponent } from './pages/calendar/calendar.component';
 import { CalendarRoutingModule } from './calendar-routing.module';
 
 import { XyzFramingModule } from '@xyz/backoffice/modules/shared/modules';
+import { NgIconsModule } from '@ng-icons/core';
+
+import {
+  HeroCalendar,
+  HeroCog
+} from '@ng-icons/heroicons';
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -22,7 +28,11 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     CommonModule,
     CalendarRoutingModule,
     FullCalendarModule,
-    XyzFramingModule
+    XyzFramingModule,
+    NgIconsModule.withIcons({
+      HeroCalendar,
+      HeroCog
+    })
   ]
 })
 export class CalendarModule { }

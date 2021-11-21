@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
       onMessageReceivedCallback: (message: firebase.Message) => {
         console.log('[Firebase] onMessageReceivedCallback:', { message });
       }
-    })
+    } )
       .then(() => {
         console.log('[Firebase] Initialized');
       })

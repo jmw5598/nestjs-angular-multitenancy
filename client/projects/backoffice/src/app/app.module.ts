@@ -1,5 +1,6 @@
 import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { environment } from '@xyz/backoffice/env/environment';
@@ -33,6 +34,7 @@ const authenticatedUserAppInitializer = {
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     XyzCoreModule.forRoot({ ...environment }),
     XyzAuthModule.forRoot()

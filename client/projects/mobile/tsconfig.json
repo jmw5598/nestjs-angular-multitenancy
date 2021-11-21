@@ -15,8 +15,8 @@
         "src/*"
       ],
       "@xyz/core": [
-        "dist/@xyz/core/xyz-core",
-        "dist/@xyz/core"
+        "../../dist/@xyz/core/xyz-core",
+        "../../dist/@xyz/core"
       ],
       "~/*": [
         "src/*"
