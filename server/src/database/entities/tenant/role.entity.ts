@@ -7,7 +7,7 @@ export class Role extends BaseEntity {
   @Column({ nullable: false, unique: true })
   public name: string
 
-  @ManyToMany(type => Role, { eager: true })
+  @ManyToMany(type => Role, { eager: false })
   @JoinTable({ 
     name: 'role_claim',
     joinColumn: { name: 'role_id', referencedColumnName: "id" },

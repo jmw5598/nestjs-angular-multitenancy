@@ -62,7 +62,7 @@ export class AuthenticationService {
   }
 
   private async _getAccessToken(user: User, tenant: Tenant, expiresIn: string): Promise<string> {
-    const roles: string[] = user.roles.map(e => e.name);
+    const roles: string[] = user?.roles?.map(e => e.name) || [];
     const payload = { 
       username: user.username, 
       sub: user.id, 
@@ -81,7 +81,7 @@ export class AuthenticationService {
   }
 
   private async _getUserDetails(user: User, tenant: Tenant): Promise<UserDetails> {
-    const roles: string[] = user.roles.map(e => e.name);
+    const roles: string[] = user?.roles?.map(e => e.name) || [];
     return {
       id: user.id,
       username: user.username,
