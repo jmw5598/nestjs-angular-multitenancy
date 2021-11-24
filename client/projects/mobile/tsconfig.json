@@ -11,22 +11,11 @@
     "lib": ["es2017", "dom"],
     "baseUrl": ".",
     "paths": {
-      "@xyz/mobile/*": [
-        "src/*"
-      ],
-      "@xyz/core": [
-        "../../dist/@xyz/core/xyz-core",
-        "../../dist/@xyz/core"
-      ],
-      "~/*": [
-        "src/*"
-      ],
-      "@/*": [
-        "src/*"
-      ]
+      "~/*": ["src/*"],
+      "@/*": ["src/*"]
     }
   },
-  "include": ["src/tests/**/*.ts", "src/**/*.ios.ts", "src/**/*.android.ts"],
+  "include": ["./src/**/*.ios.ts", "./src/**/*.android.ts"],
   "files": ["./src/main.ts", "./references.d.ts", "./src/polyfills.ts"],
-  "exclude": ["node_modules", "platforms", "e2e"]
+  "exclude": ["node_modules", "platforms"]
 }

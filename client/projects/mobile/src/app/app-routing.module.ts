@@ -2,26 +2,27 @@ import { NgModule } from '@angular/core'
 import { Routes } from '@angular/router'
 import { NativeScriptRouterModule } from '@nativescript/angular'
 
-import { ItemsComponent } from './item/items.component'
-import { ItemDetailComponent } from './item/item-detail.component'
-
 const routes: Routes = [
-  { 
-    path: '', 
-    redirectTo: '/items', 
-    pathMatch: 'full' 
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  {
+    path: 'home',
+    loadChildren: () => import('~/app/home/home.module').then((m) => m.HomeModule),
   },
   {
-    path: 'auth',
-    loadChildren: () => import('./modules/authentication/authentication.module').then(m => m.AuthenticationModule)
+    path: 'browse',
+    loadChildren: () => import('~/app/browse/browse.module').then((m) => m.BrowseModule),
   },
-  { 
-    path: 'items', 
-    component: ItemsComponent 
+  {
+    path: 'search',
+    loadChildren: () => import('~/app/search/search.module').then((m) => m.SearchModule),
   },
-  { 
-    path: 'item/:id', 
-    component: ItemDetailComponent 
+  {
+    path: 'featured',
+    loadChildren: () => import('~/app/featured/featured.module').then((m) => m.FeaturedModule),
+  },
+  {
+    path: 'settings',
+    loadChildren: () => import('~/app/settings/settings.module').then((m) => m.SettingsModule),
   },
 ]
 

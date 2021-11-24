@@ -1,6 +1,6 @@
 {
   "name": "mobile",
-  "main": "./src/main.ts",
+  "main": "src/main.ts",
   "version": "1.0.0",
   "private": true,
   "dependencies": {
@@ -14,19 +14,18 @@
     "@angular/router": "^12.2.0",
     "@nativescript/angular": "^12.2.0",
     "@nativescript/core": "~8.1.1",
-    "@nativescript/firebase": "^11.1.3",
     "@nativescript/theme": "~3.0.1",
+    "nativescript-ui-sidedrawer": "~10.0.1",
+    "reflect-metadata": "~0.1.13",
     "rxjs": "~7.3.0",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
     "@angular/compiler-cli": "^12.2.0",
     "@nativescript/android": "8.1.1",
-    "@nativescript/schematics": "^11.2.0",
     "@nativescript/types": "~8.1.1",
     "@nativescript/webpack": "~5.0.0",
     "@ngtools/webpack": "^12.2.0",
-    "sass": "^1.43.4",
     "typescript": "~4.3.5"
   }
 }
