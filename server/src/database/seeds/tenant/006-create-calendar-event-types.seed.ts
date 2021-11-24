@@ -15,21 +15,21 @@ const calednarEventTypeSeeds: CalendarEventType[] = [
     updatedAt: new Date(),
     name: 'Meeting',
     description: 'A team meeting.',
-    color: '#65ADF1'
+    color: '#5CBA21'
   } as CalendarEventType,
   {
     createdAt: new Date(),
     updatedAt: new Date(),
     name: 'Estimate',
     description: 'A customer estimate appointment',
-    color: '#65ADF1'
+    color: '#3AA0FF'
   } as CalendarEventType,
   {
     createdAt: new Date(),
     updatedAt: new Date(),
     name: 'Service',
     description: 'A customer service appointment',
-    color: '#65ADF1'
+    color: '#FFA144'
   } as CalendarEventType,
 ];
 
