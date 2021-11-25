@@ -9,21 +9,14 @@ import { LoggingOutComponent } from './pages/logging-out/logging-out.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: AuthenticationComponent,
-    children: [
-      { 
-        path: 'login', 
-        component: LoginComponent
-      },
-      {
-        path: 'forgot-password',
-        component: ForgotPasswordComponent
-      },
-    ]
+  { 
+    path: 'login', 
+    component: LoginComponent
   },
-  
+  {
+    path: 'forgot-password',
+    component: ForgotPasswordComponent
+  },
   {
     path: 'logging-in',
     component: LoggingInComponent

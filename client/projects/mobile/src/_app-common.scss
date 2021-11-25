@@ -41,3 +41,12 @@
 .nt-drawer__header-image {
   color: const(grey);
 }
+
+$text-white: #FFFFFF;
+$primary: #65ADF1;
+
+.btn {
+  .-primary {
+    background-color: $primary;
+  }
+}
