@@ -8,6 +8,7 @@ import { MultitenancyModule } from './common/multitenancy/multitenancy.module';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { UsersModule } from './users/users.module';
 import { AccountsModule } from './accounts/accounts.module';
+import { CalendarModule } from './calendar/calendar.module';
 
 @Module({
   imports: [
@@ -17,7 +18,8 @@ import { AccountsModule } from './accounts/accounts.module';
     MultitenancyModule,
     AuthenticationModule,
     UsersModule,
-    AccountsModule
+    AccountsModule,
+    CalendarModule
   ],
   controllers: [],
   providers: [],
