@@ -16,10 +16,18 @@ export class CalendarEventsService {
     this._repository = this._connection.getRepository(CalendarEvent);
   }
 
-  public async createCalendarEvent(createCalendarEventDto: CreateCalendarEventDto): Promise<CalendarEvent> {
-    // @TODO check if address exists first?
+  public async findAll(): Promise<CalendarEvent[]> {
+    return this._repository.find();
+  }
+
+  public async findByPage(): Promise<any> {
+    return null;
+  }
+
+  public async create(userId: string, createCalendarEventDto: CreateCalendarEventDto): Promise<CalendarEvent> {
     const calendarEvent: CalendarEvent = this._repository.create({
-      ...createCalendarEventDto
+      ...createCalendarEventDto,
+      createdBy: { id: userId }
     });
     return this._repository.save(calendarEvent);
   }
