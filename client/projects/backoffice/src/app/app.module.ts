@@ -14,6 +14,7 @@ import {
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CoreModule } from '@xyz/admin/modules/core/core.module';
 
 const jwtTokenInterceptor = {
   provide: HTTP_INTERCEPTORS,
@@ -36,6 +37,7 @@ const authenticatedUserAppInitializer = {
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    CoreModule,
     XyzCoreModule.forRoot({ ...environment }),
     XyzAuthModule.forRoot()
   ],
