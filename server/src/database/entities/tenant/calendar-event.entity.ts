@@ -29,10 +29,11 @@ export class CalendarEvent extends BaseEntity {
   @JoinColumn({ name: 'calendar_event_type_id' })
   public type: CalendarEventType;
 
-  @ManyToMany(type => User, { nullable: false })
+  @ManyToOne(type => User, { nullable: false })
+  @JoinColumn({ name: 'created_by' })
   public createdBy: User;
 
   @ManyToOne(type => User, { nullable: false })
-  @JoinColumn({ name: 'user_id' })
+  @JoinColumn({ name: 'assigned_to' })
   public assignedTo: User;
 }
