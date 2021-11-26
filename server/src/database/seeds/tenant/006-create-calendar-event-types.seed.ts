@@ -7,6 +7,7 @@ const calednarEventTypeSeeds: CalendarEventType[] = [
     createdAt: new Date(),
     updatedAt: new Date(),
     name: 'General',
+    key: 'general',
     description: 'A general calendar event',
     color: '#65ADF1'
   } as CalendarEventType,
@@ -14,6 +15,7 @@ const calednarEventTypeSeeds: CalendarEventType[] = [
     createdAt: new Date(),
     updatedAt: new Date(),
     name: 'Meeting',
+    key: 'meeting',
     description: 'A team meeting.',
     color: '#5CBA21'
   } as CalendarEventType,
@@ -21,6 +23,7 @@ const calednarEventTypeSeeds: CalendarEventType[] = [
     createdAt: new Date(),
     updatedAt: new Date(),
     name: 'Estimate',
+    key: 'estimate',
     description: 'A customer estimate appointment',
     color: '#3AA0FF'
   } as CalendarEventType,
@@ -28,6 +31,7 @@ const calednarEventTypeSeeds: CalendarEventType[] = [
     createdAt: new Date(),
     updatedAt: new Date(),
     name: 'Service',
+    key: 'service',
     description: 'A customer service appointment',
     color: '#FFA144'
   } as CalendarEventType,
