@@ -1,4 +1,4 @@
-import { Controller, Get, Request, UseGuards } from '@nestjs/common';
+import { Controller, Get, Query, Request, UseGuards } from '@nestjs/common';
 import { JwtAuthenticationGuard } from 'src/authentication/guards/jwt-authentication.guard';
 import { XyzLoggerService } from 'src/common/logger/xyz-logger.service';
 import { CalendarEventType } from 'src/database/entities/tenant/calendar-event-type.entity';

@@ -1,4 +1,6 @@
-import { Body, Controller, Get, Post, Request, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query, Request, UseGuards } from '@nestjs/common';
+import { startOfDay, endOfDay } from 'date-fns';
+
 import { JwtAuthenticationGuard } from 'src/authentication/guards/jwt-authentication.guard';
 import { XyzLoggerService } from 'src/common/logger/xyz-logger.service';
 import { CalendarEvent } from 'src/database/entities/tenant/calendar-event.entity';
@@ -32,6 +34,24 @@ export class CalendarEventsController {
       return this._calendarEventsService.create(userId, createCalendarEventDto);
     } catch (error) {
       this._logger.error(`Error creating calendar event`, error);
+      throw error;
+    }
+  }
+
+  @Get('between')
+  public async getCalendarEventsBetween(
+      @Request() request,
+      @Query('startDate') startDate: string,
+      @Query('endDate') endDate: string): Promise<CalendarEvent[]> {
+    try {
+      // const sd: Date = new Date(startDate);
+      // const startDateAdjusted: Date = new Date(sd.valueOf() + sd.getTimezoneOffset() * 60 * 1000)
+      // const ed: Date = new Date();
+      // const endDateAdjusted: Date = new Date(ed.valueOf() + ed.getTimezoneOffset() * 60 * 1000)
+
+      return this._calendarEventsService.findAllBetween(new Date(startDate), new Date(endDate));
+    } catch (error) {
+      this._logger.error(`Error getting calendar events between dates ${startDate} & ${endDate}!`, error);
       throw error;
     }
   }
