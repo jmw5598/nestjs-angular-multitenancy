@@ -1,29 +1,14 @@
-import { NgModule } from '@angular/core'
-import { Routes } from '@angular/router'
-import { NativeScriptRouterModule } from '@nativescript/angular'
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 
-import { AuthenticationComponent } from './pages/authentication/authentication.component';
-import { LoginComponent } from './pages/login/login.component';
-import { LoggingInComponent } from './pages/logging-in/logging-in.component';
-import { LoggingOutComponent } from './pages/logging-out/logging-out.component';
-import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
+import {
+  AuthenticationComponent,
+  ForgotPasswordComponent,
+  LoggingInComponent,
+  LoggingOutComponent,
+  LoginComponent } from '@xyz/auth';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: AuthenticationComponent,
-    children: [
-      { 
-        path: 'login', 
-        component: LoginComponent
-      },
-      {
-        path: 'forgot-password',
-        component: ForgotPasswordComponent
-      },
-    ]
-  },
-  
   {
     path: 'logging-in',
     component: LoggingInComponent
@@ -33,14 +18,28 @@ const routes: Routes = [
     component: LoggingOutComponent
   },
   {
-    path: '**',
-    redirectTo: 'login',
-    pathMatch: 'full'
-  }
-]
+    path: '',
+    component: AuthenticationComponent,
+    children: [
+      {
+        path: 'login',
+        component: LoginComponent
+      },
+      {
+        path: 'forgot-password',
+        component: ForgotPasswordComponent
+      },
+      {
+        path: '**',
+        redirectTo: 'login',
+        pathMatch: 'full'
+      }
+    ]
+  }  
+];
 
 @NgModule({
-  imports: [NativeScriptRouterModule.forChild(routes)],
-  exports: [NativeScriptRouterModule],
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
 })
-export class AuthenticationRoutingModule {}
+export class AuthenticationRoutingModule { }
