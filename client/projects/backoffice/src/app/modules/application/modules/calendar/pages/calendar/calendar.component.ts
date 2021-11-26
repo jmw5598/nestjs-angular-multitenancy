@@ -1,8 +1,11 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { CalendarOptions } from '@fullcalendar/angular';
+import { Component, OnInit, ChangeDetectionStrategy, ViewChild } from '@angular/core';
+import { CalendarOptions, EventInput, FullCalendarComponent } from '@fullcalendar/angular';
 import { CalendarEventsService } from '@xyz/backoffice/modules/core/services/calendar-events.service';
-import { fadeAnimation } from '@xyz/core';
+import { CalendarEvent, fadeAnimation } from '@xyz/core';
 import { take } from 'rxjs/operators';
+
+import { DEFAULT_CALENDAR_OPTIONS } from '@xyz/backoffice/modules/core';
+import { calendarEventsToEventInputs } from '../../utils/calendar.utils';
 
 @Component({
   selector: 'xyz-calendar',
@@ -12,9 +15,10 @@ import { take } from 'rxjs/operators';
   animations: [fadeAnimation]
 })
 export class CalendarComponent implements OnInit {
-  public calendarOptions: CalendarOptions = {
-    initialView: 'dayGridMonth'
-  };
+  @ViewChild('calendar', { static: true }) 
+  public calendar!: FullCalendarComponent;
+
+  public calendarOptions: CalendarOptions = DEFAULT_CALENDAR_OPTIONS;
 
   constructor(
     private _calendarEventService: CalendarEventsService
@@ -26,6 +30,15 @@ export class CalendarComponent implements OnInit {
     this._calendarEventService.findBetweenDates(start, end)
       .pipe(take(1))
       .subscribe(events => {
+        if (events?.length) {
+          const renderableEvents: EventInput[] = calendarEventsToEventInputs(events);
+          this.calendar?.getApi()?.getEventSourceById('Temp')?.remove();
+          this.calendar?.getApi().addEventSource({
+            events: renderableEvents,
+            id: 'Temp'
+            // id: CalendarEventType.EVENT
+          })
+        }
         console.log("got events ", events)
       });
   }

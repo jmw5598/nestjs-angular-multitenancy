@@ -12,6 +12,14 @@
     .fc-toolbar-title {
       @apply font-bold text-black;
     }
+
+    .fc-button-primary {
+      @apply bg-primary-500 hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-400 outline-none border-none;
+
+      &:disabled {
+        @apply bg-primary-300 hover:bg-primary-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-300 outline-none border-none
+      }
+    }
   }
 }
 

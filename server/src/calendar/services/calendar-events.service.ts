@@ -41,6 +41,7 @@ export class CalendarEventsService {
     const end: string = endOfDay(endDateAdjusted).toISOString();
     
     return this._repository.find({
+      relations: ['type', 'createdBy', 'assignedTo'],
       where: [
         // If start date 
         {
