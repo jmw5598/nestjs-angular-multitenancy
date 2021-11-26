@@ -3,7 +3,7 @@ import { BaseEntity } from "../base.entity";
 
 @Entity()
 export class CalendarEventType extends BaseEntity {
-  @Column({ name: 'calendar_event_type'})
+  @Column()
   public name: string;
   
   @Column()
