@@ -13,6 +13,7 @@ export * from './lib/models/address.model';
 export * from './lib/models/authenticated-user.model';
 export * from './lib/models/calendar-event-type.model';
 export * from './lib/models/calendar-event.model';
+export * from './lib/models/calendar-event-type-key.enum';
 export * from './lib/models/forgot-password.model';
 export * from './lib/models/response-message.model';
 export * from './lib/models/user-credentials.model';
