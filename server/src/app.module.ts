@@ -9,6 +9,8 @@ import { AuthenticationModule } from './authentication/authentication.module';
 import { UsersModule } from './users/users.module';
 import { AccountsModule } from './accounts/accounts.module';
 import { CalendarModule } from './calendar/calendar.module';
+import { FirebaseModule } from 'nestjs-firebase';
+import { NotificationsModule } from './common/notifications/notifications.module';
 
 @Module({
   imports: [
@@ -19,7 +21,9 @@ import { CalendarModule } from './calendar/calendar.module';
     AuthenticationModule,
     UsersModule,
     AccountsModule,
-    CalendarModule
+    CalendarModule,
+    FirebaseModule.forRoot({ googleApplicationCredential: "xyz-project-5d166-firebase-adminsdk-zvnev-7fa05cd1de.json" }),
+    NotificationsModule
   ],
   controllers: [],
   providers: [],
