@@ -15,6 +15,7 @@ import {
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from '@xyz/admin/modules/core/core.module';
+import { XyzDialogModule } from './modules/shared/modules/dialog/dialog.module';
 
 const jwtTokenInterceptor = {
   provide: HTTP_INTERCEPTORS,
@@ -39,7 +40,8 @@ const authenticatedUserAppInitializer = {
     AppRoutingModule,
     CoreModule,
     XyzCoreModule.forRoot({ ...environment }),
-    XyzAuthModule.forRoot()
+    XyzAuthModule.forRoot(),
+    XyzDialogModule.forRoot()
   ],
   providers: [
     jwtTokenInterceptor,

@@ -6,6 +6,7 @@ import { take } from 'rxjs/operators';
 
 import { DEFAULT_CALENDAR_OPTIONS } from '@xyz/backoffice/modules/core';
 import { calendarEventsToEventInputs, calendarEventsToEventInputsGroupedByType } from '../../utils/calendar.utils';
+import { XyzDialogService } from '@xyz/backoffice/modules/shared/modules/dialog/services/dialog.service';
 
 @Component({
   selector: 'xyz-calendar',
@@ -21,7 +22,8 @@ export class CalendarComponent implements OnInit {
   public calendarOptions: CalendarOptions = DEFAULT_CALENDAR_OPTIONS;
 
   constructor(
-    private _calendarEventService: CalendarEventsService
+    private _calendarEventService: CalendarEventsService,
+    private _dialogService: XyzDialogService
   ) { }
 
   ngOnInit(): void {
@@ -53,6 +55,11 @@ export class CalendarComponent implements OnInit {
         }
         console.log("got events ", events)
       });
+  }
+
+  public onShowSettingsDialog(): void {
+    console.log("showing dialog");
+    this._dialogService.open('testing', null);
   }
 
 
