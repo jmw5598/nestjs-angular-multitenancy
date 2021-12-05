@@ -1,6 +1,7 @@
 import { Overlay, OverlayConfig } from '@angular/cdk/overlay';
 import { ComponentPortal, PortalInjector } from '@angular/cdk/portal';
 import { Injectable, Injector, TemplateRef, Type } from '@angular/core';
+import { inject } from '@angular/core/testing';
 import { OverlayComponent } from '../components/overlay/overlay.component';
 import { DialogRef } from '../models/dialog-ref.model';
 
@@ -15,7 +16,7 @@ export class XyzDialogService {
 
   public open<R = any, T = any>(content: string | TemplateRef<any> | Type<any>, data: T): DialogRef<R> {
     const configs = new OverlayConfig({
-      hasBackdrop: false,
+      hasBackdrop: true,
       panelClass: ['modal', 'is-active'],
     });
 
@@ -31,6 +32,7 @@ export class XyzDialogService {
 
   public createInjector(ref: DialogRef, inj: Injector) {
     const injectorTokens = new WeakMap([[DialogRef, ref]]);
+
     return new PortalInjector(inj, injectorTokens);
   }
 }

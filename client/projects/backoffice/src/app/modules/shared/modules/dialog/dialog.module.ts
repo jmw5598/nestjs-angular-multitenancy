@@ -3,14 +3,19 @@ import { CommonModule } from '@angular/common';
 import { OverlayComponent } from './components/overlay/overlay.component';
 import { XyzDialogService } from './services/dialog.service';
 import { OverlayModule } from '@angular/cdk/overlay';
+import { XyzConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 
 @NgModule({
   declarations: [
-    OverlayComponent
+    OverlayComponent,
+    XyzConfirmationDialogComponent
   ],
   imports: [
     CommonModule,
     OverlayModule
+  ],
+  exports: [
+    XyzConfirmationDialogComponent
   ]
 })
 export class XyzDialogModule {

@@ -7,6 +7,8 @@ import { take } from 'rxjs/operators';
 import { DEFAULT_CALENDAR_OPTIONS } from '@xyz/backoffice/modules/core';
 import { calendarEventsToEventInputs, calendarEventsToEventInputsGroupedByType } from '../../utils/calendar.utils';
 import { XyzDialogService } from '@xyz/backoffice/modules/shared/modules/dialog/services/dialog.service';
+import { XyzConfirmationDialogComponent } from '@xyz/backoffice/modules/shared/modules/dialog/components/confirmation-dialog/confirmation-dialog.component';
+import { DialogCloseEvent, DialogRef } from '@xyz/backoffice/modules/shared/modules/dialog/models/dialog-ref.model';
 
 @Component({
   selector: 'xyz-calendar',
@@ -59,7 +61,17 @@ export class CalendarComponent implements OnInit {
 
   public onShowSettingsDialog(): void {
     console.log("showing dialog");
-    this._dialogService.open('testing', null);
+    const dialogRef: DialogRef = this._dialogService.open(XyzConfirmationDialogComponent, { 
+      headerText: 'Confirm?',
+      confirmationText: 'Please confirm before deleting.  Are you sure?',
+      confirmationButtonText: 'Confirm',
+      cancelButtonText: 'Cancel'
+    })
+    dialogRef.onClose()
+      .pipe(take(1))
+      .subscribe((result: DialogCloseEvent<boolean>) => {
+        console.log("confirmed? ", result.data);
+      })
   }
 
 
