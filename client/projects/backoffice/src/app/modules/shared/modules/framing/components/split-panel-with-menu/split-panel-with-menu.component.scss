@@ -1,11 +1,57 @@
-:host {
+:host ::ng-deep {
   height: calc(100vh - 88px);
+  position: relative;
+  z-index: 2;
+
   .split-panel-menu {
-    width: 72px;
+    @apply bg-white h-full w-full border-r border-gray-200 m-0 p-0;
+
+    width: 92px;
+
+    .split-panel-menu-group {
+      @apply bg-white flex flex-col p-2;
+
+      .split-panel-menu-button {
+        @apply py-3 flex flex-col items-center justify-center rounded-lg hover:bg-gray-100;
+
+        .split-panel-menu-icon {
+          @apply text-gray-400 mb-1;
+        }
+
+        .split-panel-menu-label {
+          @apply text-sm text-gray-400;
+        }
+
+        &.active {
+          @apply bg-gray-100;
+          .split-panel-menu-icon {
+            @apply text-gray-500;
+          }
+
+          .split-panel-menu-label {
+            @apply text-sm text-gray-500;
+          }
+        }
+
+        &:hover {
+          .split-panel-menu-icon {
+            @apply text-gray-700;
+          }
+
+          .split-panel-menu-label {
+            @apply text-gray-700;
+          }
+        }
+      }
+    }
   }
 
   .split-panel-menu-extension {
+    @apply bg-white;
     width: 450px;
+    // position: absolute;
+    // left: 92px;
+    // z-index: 1;
   }
 
   .split-panel-content {

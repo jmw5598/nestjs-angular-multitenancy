@@ -38,13 +38,20 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this._authenticationStore.onStateChanges()
+    this._authenticationStore
+      .select(state => state.authenticatedStatus)
       .pipe(takeUntil(this._subscriptionSubject))
-      .subscribe((state: AuthenticationState) => {
-        if (state.authenticatedStatus === AuthenticatedStatus.AUTHENTICATED) {
+      .subscribe((status: AuthenticatedStatus | null) => {
+        if (status === AuthenticatedStatus.AUTHENTICATED) {
           this._router.navigate(['/auth', 'logging-in']);
         }
-        this.loginResponseMessage = state.loginResponseMessage;
+      });
+    
+    this._authenticationStore
+      .select(state => state.loginResponseMessage)
+      .pipe(takeUntil(this._subscriptionSubject))
+      .subscribe(message => {
+        this.loginResponseMessage = message;
         this._cd.markForCheck();
       });
   }

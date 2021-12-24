@@ -1,4 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, HostBinding } from '@angular/core';
+import { Observable } from 'rxjs';
+import { SplitPanelMenuExtensionService, SplitPanelMenuExtensionState } from '../split-panel-menu-extension.service';
 
 @Component({
   selector: 'xyz-split-panel-with-menu',
@@ -12,9 +14,15 @@ export class SplitPanelWithMenuComponent implements OnInit {
     return 'split-panel flex flex-row w-100';
   }
 
-  constructor() { }
+  public sidePanelState$!: Observable<SplitPanelMenuExtensionState>;
 
-  ngOnInit(): void {
+  constructor(private _extensionService: SplitPanelMenuExtensionService) {
+    this._selectState();
   }
 
+  ngOnInit(): void { }
+
+  private _selectState(): void {
+    this.sidePanelState$ = this._extensionService.onStateChanges();
+  }
 }

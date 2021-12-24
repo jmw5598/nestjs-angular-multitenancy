@@ -1,4 +1,5 @@
 import { BehaviorSubject, Observable } from 'rxjs';
+import { distinctUntilChanged, map } from 'rxjs/operators';
 import { deepFreeze } from '../utils/deep-freeze.util';
 
 export abstract class AbstractStore<T> {
@@ -17,6 +18,14 @@ export abstract class AbstractStore<T> {
   public setState(state: T): void {
     this._state = deepFreeze(state);
     this._stateSource.next(this._state);
+  }
+
+  public select<R>(fn: (state: T) => R): Observable<R> {
+    return this._stateSource.asObservable()
+      .pipe(
+        map(fn),
+        distinctUntilChanged()
+      );
   }
 
   public abstract resetState(): void;

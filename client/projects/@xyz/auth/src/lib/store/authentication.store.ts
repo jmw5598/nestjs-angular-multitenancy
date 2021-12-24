@@ -59,7 +59,7 @@ export class AuthenticationStore extends AbstractStore<AuthenticationState> {
   }
 
   public resetState(): void {
-    // @TODO
+    // @TODOObseravble
   }
 
   private _handleSuccessfulUserAuthentication(authenticatedUser: AuthenticatedUser): void {
