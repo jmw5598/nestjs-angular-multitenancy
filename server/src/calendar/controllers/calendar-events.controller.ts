@@ -15,6 +15,7 @@ export class CalendarEventsController {
     private readonly _calendarEventsService: CalendarEventsService
   ) {
     this._logger.setContext(this.constructor.name);
+    this._logger.error('CALEND EVENTS CONTROLLER CREATED', null);
   }
 
   @Get()

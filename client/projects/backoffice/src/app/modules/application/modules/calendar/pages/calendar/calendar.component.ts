@@ -9,6 +9,8 @@ import { calendarEventsToEventInputs, calendarEventsToEventInputsGroupedByType }
 import { XyzDialogService } from '@xyz/backoffice/modules/shared/modules/dialog/services/dialog.service';
 import { XyzConfirmationDialogComponent } from '@xyz/backoffice/modules/shared/modules/dialog/components/confirmation-dialog/confirmation-dialog.component';
 import { DialogCloseEvent, DialogRef } from '@xyz/backoffice/modules/shared/modules/dialog/models/dialog-ref.model';
+import { ListOptionsStore } from '@xyz/backoffice/modules/core/stores/list-options.store';
+import { ListOptionsKeys } from '@xyz/backoffice/modules/core/models';
 
 @Component({
   selector: 'xyz-calendar',
@@ -25,10 +27,18 @@ export class CalendarComponent implements OnInit {
 
   constructor(
     private _calendarEventService: CalendarEventsService,
-    private _dialogService: XyzDialogService
+    private _dialogService: XyzDialogService,
+    private _listOptionsStore: ListOptionsStore
   ) { }
 
   ngOnInit(): void {
+    this._listOptionsStore.getListOptionsByKey(ListOptionsKeys.USERS);
+
+    this._listOptionsStore.select(state => state[ListOptionsKeys.USERS])
+      .subscribe(options => {
+        console.log("user list options are ", options);
+      })
+
     this._configureCalendarOptions();
     const start: Date = new Date();
     start.setDate(1);
