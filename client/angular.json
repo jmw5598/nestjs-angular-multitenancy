@@ -28,6 +28,11 @@
             "tsConfig": "projects/admin/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
+              {
+                "glob": "**/*",
+                "input": "./node_modules/leaflet/dist/images",
+                "output": "leaflet/"
+              },
               "projects/admin/src/favicon.ico",
               "projects/admin/src/assets"
             ],

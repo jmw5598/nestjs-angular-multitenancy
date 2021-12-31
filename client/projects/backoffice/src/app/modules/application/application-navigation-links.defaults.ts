@@ -45,8 +45,16 @@ const calendarLinks: NavigationLink = {
   iconName: 'hero-chart-bar'
 }
 
+const dispatcherLinks: NavigationLink ={
+  label: 'Dispatch',
+  description: 'Current locations of team.',
+  routerLink: '/dispatcher/map',
+  iconName: 'hero-chart-bar'
+}
+
 export const DEFAULT_NAVIGATION_LINKS: NavigationLink[] = [
   dashboardLinks,
   crmLinks,
-  calendarLinks
+  calendarLinks,
+  dispatcherLinks
 ];

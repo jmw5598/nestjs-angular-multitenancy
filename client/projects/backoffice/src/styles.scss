@@ -5,5 +5,8 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+// Leaflet Styles
+@import '../../../node_modules/leaflet/dist/leaflet.css';
+
 // Shared SCSS
 @import '../../@assets/scss/main.scss';
